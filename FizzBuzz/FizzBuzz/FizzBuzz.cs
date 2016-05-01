@@ -20,6 +20,11 @@ namespace FizzBuzz
                 return "Fizz";
             }
 
+            if (number == 5)
+            {
+                return "Buzz";
+            }
+
             return number.ToString();
         }
     }
