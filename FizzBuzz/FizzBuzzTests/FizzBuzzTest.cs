@@ -4,85 +4,24 @@ namespace FizzBuzzTests
 {
     public class FizzBuzzTest
     {
-        [Fact]
-        public void FizzBuzz_for_one_element_outputs_one_number()
+
+        [Theory]
+        [InlineData("1", 1)]
+        [InlineData("1 2", 2)]
+        [InlineData("1 2 Fizz", 3)]
+        [InlineData("1 2 Fizz 4", 4)]
+        [InlineData("1 2 Fizz 4 Buzz", 5)]
+        [InlineData("1 2 Fizz 4 Buzz Fizz", 6)]
+        [InlineData("1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz", 10)]
+        [InlineData("1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz", 15)]
+        [InlineData("1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz 16 17 Fizz 19 Buzz Fizz 22 23 Fizz Buzz 26 Fizz 28 29 FizzBuzz", 30)]
+        public void FizzBuzz_sequence_for_given_number_of_elements(string expectedFizzBuzz, int numberOfElements)
         {
             var fizzBuzz = new FizzBuzz.FizzBuzz();
 
-            string fizzBuzzSequence = fizzBuzz.Get(1);
+            string fizzBuzzSequence = fizzBuzz.Get(numberOfElements);
 
-            Assert.Equal("1", fizzBuzzSequence);
+            Assert.Equal(expectedFizzBuzz, fizzBuzzSequence);
         }
-
-        [Fact]
-        public void FizzBuzz_for_two_elements_outputs_two_numbers()
-        {
-            var fizzBuzz = new FizzBuzz.FizzBuzz();
-
-            string fizzBuzzSequence = fizzBuzz.Get(2);
-
-            Assert.Equal("1 2", fizzBuzzSequence);
-        }
-
-        [Fact]
-        public void FizzBuzz_for_three_elements_ends_with_fizz()
-        {
-            var fizzBuzz = new FizzBuzz.FizzBuzz();
-
-            string fizzBuzzSequence = fizzBuzz.Get(3);
-
-            Assert.True(fizzBuzzSequence.Contains("Fizz"));
-        }
-
-        [Fact]
-        public void FizzBuzz_for_six_elements_ends_with_fizz()
-        {
-            var fizzBuzz = new FizzBuzz.FizzBuzz();
-
-            string fizzBuzzSequence = fizzBuzz.Get(6);
-
-            Assert.True(fizzBuzzSequence.EndsWith("Fizz"));
-        }
-
-        [Fact]
-        public void FizzBuzz_for_five_elements_ends_with_buzz()
-        {
-            var fizzBuzz = new FizzBuzz.FizzBuzz();
-
-            string fizzBuzzSequence = fizzBuzz.Get(5);
-
-            Assert.True(fizzBuzzSequence.EndsWith("Buzz"));
-        }
-
-        [Fact]
-        public void FizzBuzz_for_ten_elements_ends_with_buzz()
-        {
-            var fizzBuzz = new FizzBuzz.FizzBuzz();
-
-            string fizzBuzzSequence = fizzBuzz.Get(10);
-
-            Assert.True(fizzBuzzSequence.EndsWith("Buzz"));
-        }
-
-        [Fact]
-        public void FizzBuzz_for_15_elements_ends_with_fizzbuzz()
-        {
-            var fizzBuzz = new FizzBuzz.FizzBuzz();
-
-            string fizzBuzzSequence = fizzBuzz.Get(15);
-
-            Assert.True(fizzBuzzSequence.EndsWith("FizzBuzz"));
-        }
-
-        [Fact]
-        public void FizzBuzz_for_30_elements_ends_with_fizzbuzz()
-        {
-            var fizzBuzz = new FizzBuzz.FizzBuzz();
-
-            string fizzBuzzSequence = fizzBuzz.Get(30);
-
-            Assert.True(fizzBuzzSequence.EndsWith("FizzBuzz"));
-        }
-
     }
 }
