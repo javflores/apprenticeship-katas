@@ -33,5 +33,16 @@ namespace FizzBuzzTests
 
             Assert.True(fizzBuzzSequence.Contains("Fizz"));
         }
+
+        [Fact]
+        public void FizzBuzz_for_six_elements_includes_two_fizz()
+        {
+            var fizzBuzz = new FizzBuzz.FizzBuzz();
+
+            string fizzBuzzSequence = fizzBuzz.Get(6);
+
+            Assert.True(fizzBuzzSequence.EndsWith("Fizz"));
+        }
+
     }
 }
