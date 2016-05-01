@@ -8,7 +8,19 @@ namespace FizzBuzz
         {
             var integerSequence = Enumerable.Range(1, numberOfElements);
 
-            return string.Join(" ", integerSequence);
+            var fizzBuzzSequence = integerSequence.Select(ToFizzBuzz);
+
+            return string.Join(" ", fizzBuzzSequence);
+        }
+
+        private string ToFizzBuzz(int number)
+        {
+            if (number == 3)
+            {
+                return "Fizz";
+            }
+
+            return number.ToString();
         }
     }
 }
