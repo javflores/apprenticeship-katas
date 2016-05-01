@@ -25,7 +25,7 @@ namespace FizzBuzzTests
         }
 
         [Fact]
-        public void FizzBuzz_for_three_elements_includes_fizz()
+        public void FizzBuzz_for_three_elements_ends_with_fizz()
         {
             var fizzBuzz = new FizzBuzz.FizzBuzz();
 
@@ -45,7 +45,7 @@ namespace FizzBuzzTests
         }
 
         [Fact]
-        public void FizzBuzz_for_five_elements_includes_buzz()
+        public void FizzBuzz_for_five_elements_ends_with_buzz()
         {
             var fizzBuzz = new FizzBuzz.FizzBuzz();
 
@@ -62,6 +62,16 @@ namespace FizzBuzzTests
             string fizzBuzzSequence = fizzBuzz.Get(10);
 
             Assert.True(fizzBuzzSequence.EndsWith("Buzz"));
+        }
+
+        [Fact]
+        public void FizzBuzz_for_15_elements_ends_with_fizzbuzz()
+        {
+            var fizzBuzz = new FizzBuzz.FizzBuzz();
+
+            string fizzBuzzSequence = fizzBuzz.Get(15);
+
+            Assert.True(fizzBuzzSequence.EndsWith("FizzBuzz"));
         }
 
     }
