@@ -1,0 +1,9 @@
+bin/
+obj/
+.vs
+*.ncrunch*
+packages/
+FizzBuzz/_NCrunch_FizzBuzz
+FizzBuzz/TestResults
+_NCrunch_FizzBuzz
+
