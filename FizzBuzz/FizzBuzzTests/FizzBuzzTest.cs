@@ -74,5 +74,15 @@ namespace FizzBuzzTests
             Assert.True(fizzBuzzSequence.EndsWith("FizzBuzz"));
         }
 
+        [Fact]
+        public void FizzBuzz_for_30_elements_ends_with_fizzbuzz()
+        {
+            var fizzBuzz = new FizzBuzz.FizzBuzz();
+
+            string fizzBuzzSequence = fizzBuzz.Get(30);
+
+            Assert.True(fizzBuzzSequence.EndsWith("FizzBuzz"));
+        }
+
     }
 }

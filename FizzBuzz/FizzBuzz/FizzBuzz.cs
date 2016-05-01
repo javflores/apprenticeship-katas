@@ -15,7 +15,7 @@ namespace FizzBuzz
 
         private string ToFizzBuzz(int number)
         {
-            if (number == 15)
+            if (number % 15 == 0)
             {
                 return "FizzBuzz";
             }
