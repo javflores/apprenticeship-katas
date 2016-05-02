@@ -10,7 +10,7 @@ namespace Tests
         [InlineData(1900, false)]
         [InlineData(1996, true)]
         [InlineData(2000, true)]
-        public void Find_if_year_is_leap(int commonYear, bool isLeap)
+        public void find_if_year_is_leap(int commonYear, bool isLeap)
         {
             Assert.Equal(isLeap, IsLeap(commonYear));
         }
