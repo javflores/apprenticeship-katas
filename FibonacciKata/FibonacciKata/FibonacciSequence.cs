@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 
 namespace FibonacciKata
@@ -7,19 +6,29 @@ namespace FibonacciKata
     {
         public IEnumerable<int> Generate(int numberOfElements)
         {
-            var sequence = new List<int>();
-
-            if (numberOfElements >= 1)
+            if (numberOfElements == 0)
             {
-                sequence.Add(1);
+                return new List<int>();
             }
 
-            if (numberOfElements == 2)
+            return Next(numberOfElements, 0, new List<int>());
+        }
+
+        private IList<int> Next(int numberOfElements, int currentElement, IList<int> currentSequence)
+        {
+            if (numberOfElements == currentElement)
             {
-                sequence.Add(1);
+                return currentSequence;
             }
 
-            return sequence;
+            var nextFibonacci = GetNextFibonacci(currentElement, currentSequence);
+            currentSequence.Add(nextFibonacci);
+            return Next(numberOfElements, currentElement + 1, currentSequence);
+        }
+
+        private int GetNextFibonacci(int currentElement, IList<int> currentSequence)
+        {
+            return currentElement < 2 ? 1 : currentSequence[currentElement - 1] + currentSequence[currentElement - 2];
         }
     }
 }

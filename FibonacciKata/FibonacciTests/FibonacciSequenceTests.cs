@@ -10,7 +10,10 @@ namespace FibonacciTests
         [InlineData(new int[]{}, 0)]
         [InlineData(new[] { 1 }, 1)]
         [InlineData(new[] { 1, 1 }, 2)]
-        public void contain_numbers_as_sum_of_previous_two_numbers(int[] expectedFibonacci, int numberOfElements)
+        [InlineData(new[] { 1, 1, 2 }, 3)]
+        [InlineData(new[] { 1, 1, 2, 3 }, 4)]
+        [InlineData(new[] { 1, 1, 2, 3, 5, 8, 13, 21, 34, 55 }, 10)]
+        public void have_each_element_as_sum_of_previous_two_elements(int[] expectedFibonacci, int numberOfElements)
         {
             var fibonacciSequence = new FibonacciSequence().Generate(numberOfElements);
 
