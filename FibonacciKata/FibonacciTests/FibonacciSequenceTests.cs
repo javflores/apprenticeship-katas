@@ -12,7 +12,7 @@ namespace FibonacciTests
         [InlineData(new[] { 1, 1 }, 2)]
         public void contain_numbers_as_sum_of_previous_two_numbers(int[] expectedFibonacci, int numberOfElements)
         {
-            var fibonacciSequence = new FibonacciSequence(numberOfElements);
+            var fibonacciSequence = new FibonacciSequence().Generate(numberOfElements);
 
             Assert.True(fibonacciSequence.SequenceEqual(expectedFibonacci));
         }

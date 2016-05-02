@@ -3,35 +3,23 @@ using System.Collections.Generic;
 
 namespace FibonacciKata
 {
-    public class FibonacciSequence : IEnumerable<int>
+    public class FibonacciSequence
     {
-        private readonly int _numberOfElements;
-        private readonly IList<int> _sequence;
-
-        public FibonacciSequence(int numberOfElements)
+        public IEnumerable<int> Generate(int numberOfElements)
         {
-            _numberOfElements = numberOfElements;
-            _sequence = new List<int>();
-        }
+            var sequence = new List<int>();
 
-        public IEnumerator<int> GetEnumerator()
-        {
-            if (_numberOfElements >= 1)
+            if (numberOfElements >= 1)
             {
-                _sequence.Add(1);
+                sequence.Add(1);
             }
 
-            if (_numberOfElements == 2)
+            if (numberOfElements == 2)
             {
-                _sequence.Add(1);
+                sequence.Add(1);
             }
 
-            return _sequence.GetEnumerator();
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
+            return sequence;
         }
     }
 }
