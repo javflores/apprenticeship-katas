@@ -4,17 +4,7 @@ namespace LeapYear
     {
         public static bool IsLeap(int year)
         {
-            if (IsTypicalLeapYear(year))
-            {
-                return true;
-            }
-
-            if (IsAtypicalLeapYear(year))
-            {
-                return true;
-            }
-
-            return false;
+            return IsTypicalLeapYear(year) || IsAtypicalLeapYear(year);
         }
 
         private static bool IsTypicalLeapYear(int year)
