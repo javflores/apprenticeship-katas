@@ -2,16 +2,29 @@ namespace LeapYear
 {
     public class LeapYear
     {
-        private readonly int _year;
-
-        public LeapYear(int year)
+        public static bool IsLeap(int year)
         {
-            _year = year;
+            if (IsTypicalLeapYear(year))
+            {
+                return true;
+            }
+
+            if (IsAtypicalLeapYear(year))
+            {
+                return true;
+            }
+
+            return false;
         }
 
-        public static implicit operator bool(LeapYear leapYear)
+        private static bool IsTypicalLeapYear(int year)
         {
-            return false;
+            return year%4 == 0 && year%100 != 0;
+        }
+
+        private static bool IsAtypicalLeapYear(int year)
+        {
+            return year%400 == 0;
         }
     }
 }
