@@ -7,7 +7,6 @@ namespace LeapYear
         [Theory]
         [InlineData(2001)]
         [InlineData(1900)]
-        [Fact]
         public void Common_year(int commonYear)
         {
             Assert.False(LeapYear.IsLeap(commonYear));
