@@ -16,7 +16,12 @@ namespace FibonacciKata
 
         public IEnumerator<int> GetEnumerator()
         {
-            if (_numberOfElements == 1)
+            if (_numberOfElements >= 1)
+            {
+                _sequence.Add(1);
+            }
+
+            if (_numberOfElements == 2)
             {
                 _sequence.Add(1);
             }
