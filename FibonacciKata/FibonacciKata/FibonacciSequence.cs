@@ -1,42 +1,58 @@
+using System.Collections;
 using System.Collections.Generic;
 
 namespace FibonacciKata
 {
-    public class FibonacciSequence
+    public class FibonacciSequence : IEnumerable<int>
     {
-        public IEnumerable<int> Generate(int numberOfElements)
+        private readonly int _numberOfElements;
+        private List<int> _currentSequence;
+
+        public FibonacciSequence(int numberOfElements)
         {
-            if (numberOfElements == 0)
+            _numberOfElements = numberOfElements;
+        }
+
+        public IEnumerator<int> GetEnumerator()
+        {
+            _currentSequence = new List<int>();
+
+            if (_numberOfElements > 0)
             {
-                return new List<int>();
+                BuildSequence(0);
             }
 
-            return GenerateSequence(numberOfElements, 0, new List<int>());
+            return _currentSequence.GetEnumerator();
         }
 
-        private IList<int> GenerateSequence(int numberOfElements, int currentIndex, IList<int> currentSequence)
+        private void BuildSequence(int currentIndex)
         {
-            if (AllElementsGenerated(numberOfElements, currentIndex))
+            if (IsSequenceGenerated(currentIndex))
             {
-                return currentSequence;
+                return;
             }
 
-            var nextFibonacci = NextFibonacci(currentIndex, currentSequence);
-            currentSequence.Add(nextFibonacci);
+            var nextFibonacci = NextFibonacci(currentIndex);
+            _currentSequence.Add(nextFibonacci);
 
-            return GenerateSequence(numberOfElements, currentIndex + 1, currentSequence);
+            BuildSequence(currentIndex + 1);
         }
 
-        private bool AllElementsGenerated(int numberOfElements, int currentIndex)
+        private bool IsSequenceGenerated(int currentIndex)
         {
-            return numberOfElements == currentIndex;
+            return currentIndex == _numberOfElements;
         }
 
-        private int NextFibonacci(int currentElement, IList<int> currentSequence)
+        private int NextFibonacci(int currentIndex)
         {
-            return currentElement < 2 
+            return currentIndex < 2 
                 ? 1 
-                : currentSequence[currentElement - 1] + currentSequence[currentElement - 2];
+                : _currentSequence[currentIndex - 1] + _currentSequence[currentIndex - 2];
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
         }
     }
 }
