@@ -25,12 +25,25 @@ namespace BowlingGame
 
         private int FrameScore(string frame)
         {
-            if (frame.Contains("9"))
+            if (frame.Contains("X"))
             {
-                return 9;
+                return 30;
+            }
+            var scores = frame.ToCharArray()
+                .Select(ball => ToScore(ball))
+                .ToList();
+
+            return scores[0] + scores[1];
+        }
+
+        private int ToScore(char firstBall)
+        {
+            if (Char.IsNumber(firstBall))
+            {
+                return int.Parse(firstBall.ToString());
             }
 
-            return 30;
+            return 0;
         }
     }
 }
