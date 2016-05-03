@@ -1,4 +1,5 @@
-﻿using Xunit;
+﻿using BowlingGame;
+using Xunit;
 
 namespace BowlingGameTests
 {
@@ -9,9 +10,9 @@ namespace BowlingGameTests
         [InlineData("9-|9-|9-|9-|9-|9-|9-|9-|9-|9-||", 90)]
         [InlineData("8-|8-|8-|8-|8-|8-|8-|8-|8-|8-||", 80)]
         [InlineData("81|81|81|81|81|81|81|81|81|81||", 90)]
-        public void score_the_game(string game, int expectedScore)
+        public void score_the_game(string gameOutput, int expectedScore)
         {
-            var score = new BowlingGame.BowlingGame().Score(game);
+            var score = new BowlingGame.BowlingGame(new GameParser()).Score(gameOutput);
             Assert.Equal(expectedScore, score);
         }
     }

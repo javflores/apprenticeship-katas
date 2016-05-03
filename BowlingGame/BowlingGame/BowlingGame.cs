@@ -5,22 +5,21 @@ namespace BowlingGame
 {
     public class BowlingGame
     {
-        private readonly string[] MainGameDelimiter = { "", "||" };
-        private const char FrameDelimiter = '|';
+        private readonly GameParser _gameParser;
 
-        public int Score(string game)
+        public BowlingGame(GameParser gameParser)
         {
-            var frames = FindFrames(game);
-
-            return frames
-                .Select(frame => FrameScore(frame))
-                .Aggregate((frameScore, nextFrameScore) => frameScore + nextFrameScore);
+            _gameParser = gameParser;
         }
 
-        private string[] FindFrames(string game)
+        public int Score(string gameOutput)
         {
-            var parsedGame = game.Split(MainGameDelimiter, StringSplitOptions.None);
-            return parsedGame[0].Split(FrameDelimiter);
+            var game = _gameParser.Parse(gameOutput);
+
+            return game
+                .Frames
+                .Select(frame => FrameScore(frame))
+                .Aggregate((frameScore, nextFrameScore) => frameScore + nextFrameScore);
         }
 
         private int FrameScore(string frame)
