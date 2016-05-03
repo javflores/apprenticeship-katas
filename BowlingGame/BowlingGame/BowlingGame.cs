@@ -5,7 +5,7 @@ namespace BowlingGame
 {
     public class BowlingGame
     {
-        private string[] MainGameDelimiter = new[] { "", "||" };
+        private readonly string[] MainGameDelimiter = { "", "||" };
         private const char FrameDelimiter = '|';
 
         public int Score(string game)
