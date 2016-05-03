@@ -5,14 +5,22 @@ namespace BowlingGame
 {
     public class BowlingGame
     {
+        private string[] MainGameDelimiter = new[] { "", "||" };
+        private const char FrameDelimiter = '|';
+
         public int Score(string game)
         {
-            var parsedGame = game.Split(new string[]{"", "||"}, StringSplitOptions.None);
-            var frames = parsedGame[0].Split('|');
+            var frames = FindFrames(game);
 
             return frames
                 .Select(frame => FrameScore(frame))
                 .Aggregate((frameScore, nextFrameScore) => frameScore + nextFrameScore);
+        }
+
+        private string[] FindFrames(string game)
+        {
+            var parsedGame = game.Split(MainGameDelimiter, StringSplitOptions.None);
+            return parsedGame[0].Split(FrameDelimiter);
         }
 
         private int FrameScore(string frame)
@@ -21,10 +29,8 @@ namespace BowlingGame
             {
                 return 9;
             }
-            else
-            {
-                return 10;
-            }
+
+            return 30;
         }
     }
 }
