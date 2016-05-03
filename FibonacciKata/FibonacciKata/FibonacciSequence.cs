@@ -1,28 +1,23 @@
-using System.Collections;
 using System.Collections.Generic;
 
 namespace FibonacciKata
 {
-    public class FibonacciSequence : IEnumerable<int>
+    public class FibonacciSequence
     {
-        private readonly int _numberOfElements;
-        private List<int> _currentSequence;
+        private int _numberOfElements;
+        private IList<int> _sequence;
 
-        public FibonacciSequence(int numberOfElements)
+        public IEnumerable<int> Generate(int numberOfElements)
         {
             _numberOfElements = numberOfElements;
-        }
-
-        public IEnumerator<int> GetEnumerator()
-        {
-            _currentSequence = new List<int>();
+            _sequence = new List<int>();
 
             if (_numberOfElements > 0)
             {
                 BuildSequence(0);
             }
 
-            return _currentSequence.GetEnumerator();
+            return _sequence;
         }
 
         private void BuildSequence(int currentIndex)
@@ -33,7 +28,7 @@ namespace FibonacciKata
             }
 
             var nextFibonacci = NextFibonacci(currentIndex);
-            _currentSequence.Add(nextFibonacci);
+            _sequence.Add(nextFibonacci);
 
             BuildSequence(currentIndex + 1);
         }
@@ -47,12 +42,7 @@ namespace FibonacciKata
         {
             return currentIndex < 2 
                 ? 1 
-                : _currentSequence[currentIndex - 1] + _currentSequence[currentIndex - 2];
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
+                : _sequence[currentIndex - 1] + _sequence[currentIndex - 2];
         }
     }
 }
