@@ -5,10 +5,14 @@ namespace BowlingGameTests
 {
     public class FrameShould
     {
-        [Fact]
-        public void contain_balls()
+        [Theory]
+        [InlineData("X", 30)]
+        [InlineData("9-", 9)]
+        [InlineData("8-", 8)]
+        [InlineData("81", 9)]
+        public void have_a_score(string frame, int expectedScore)
         {
-            Assert.Equal("35", new Frame("35").Balls);
+            Assert.Equal(expectedScore, new Frame(frame).Score());
         }
     }
 }
