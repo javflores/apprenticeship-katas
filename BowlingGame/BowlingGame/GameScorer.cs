@@ -3,18 +3,11 @@ using System.Linq;
 
 namespace BowlingGame
 {
-    public class BowlingGame
+    public class GameScorer
     {
-        private readonly GameParser _gameParser;
-
-        public BowlingGame(GameParser gameParser)
-        {
-            _gameParser = gameParser;
-        }
-
         public int Score(string gameOutput)
         {
-            var game = _gameParser.Parse(gameOutput);
+            var game = new Game(gameOutput);
 
             return game
                 .Frames

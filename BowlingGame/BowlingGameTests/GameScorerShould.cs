@@ -3,7 +3,7 @@ using Xunit;
 
 namespace BowlingGameTests
 {
-    public class BowlingGameShould
+    public class GameScorerShould
     {
         [Theory]
         [InlineData("X|X|X|X|X|X|X|X|X|X||XX", 300)]
@@ -12,7 +12,8 @@ namespace BowlingGameTests
         [InlineData("81|81|81|81|81|81|81|81|81|81||", 90)]
         public void score_the_game(string gameOutput, int expectedScore)
         {
-            var score = new BowlingGame.BowlingGame(new GameParser()).Score(gameOutput);
+            var score = new GameScorer().Score(gameOutput);
+
             Assert.Equal(expectedScore, score);
         }
     }

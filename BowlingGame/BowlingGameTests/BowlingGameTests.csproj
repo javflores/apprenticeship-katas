@@ -56,8 +56,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BowlingGameShould.cs" />
-    <Compile Include="GameParserShould.cs" />
+    <Compile Include="GameScorerShould.cs" />
+    <Compile Include="GameShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
