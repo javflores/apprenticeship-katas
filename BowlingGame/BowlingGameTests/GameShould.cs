@@ -14,7 +14,7 @@ namespace BowlingGameTests
         {
             var game = new Game(gameOutput);
 
-            Assert.True(game.Frames.SequenceEqual(expectedFrames));
+            Assert.True(expectedFrames.All(expectedFrame => IsExpectedFrameIncluded(game, expectedFrame)));
         }
 
         [Theory]
@@ -39,5 +39,9 @@ namespace BowlingGameTests
             Assert.Equal(expectedScore, game.Score());
         }
 
+        private bool IsExpectedFrameIncluded(Game game, string expectedFrame)
+        {
+            return game.Frames.Any(frame => frame.Balls == expectedFrame);
+        }
     }
 }

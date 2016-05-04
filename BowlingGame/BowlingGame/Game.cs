@@ -9,13 +9,13 @@ namespace BowlingGame
         private readonly string[] MainGameDelimiter = { "", "||" };
         private const char FrameDelimiter = '|';
 
-        public IEnumerable<string> Frames { get; }
+        public IEnumerable<Frame> Frames { get; }
         public string BonusBalls { get; }
 
         public Game(string gameOutput)
         {
             var parsedGame = gameOutput.Split(MainGameDelimiter, StringSplitOptions.None);
-            Frames = parsedGame[0].Split(FrameDelimiter);
+            Frames = parsedGame[0].Split(FrameDelimiter).Select(frame => new Frame(frame));
             BonusBalls = parsedGame[1];
         }
 
@@ -26,13 +26,13 @@ namespace BowlingGame
                 .Aggregate((frameScore, nextFrameScore) => frameScore + nextFrameScore);
         }
 
-        private int FrameScore(string frame)
+        private int FrameScore(Frame frame)
         {
-            if (frame.Contains("X"))
+            if (frame.Balls.Contains("X"))
             {
                 return 30;
             }
-            var scores = frame.ToCharArray()
+            var scores = frame.Balls.ToCharArray()
                 .Select(ball => ToScore(ball))
                 .ToList();
 
