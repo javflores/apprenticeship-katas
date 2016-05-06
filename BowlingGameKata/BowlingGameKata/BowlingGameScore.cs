@@ -10,12 +10,12 @@ namespace BowlingGameKata
         {
             var mainFrames = gameResult.Split(new []{"||"}, StringSplitOptions.RemoveEmptyEntries);
             var frames = mainFrames[0].Split('|');
-            var ballsForFrames = frames.Select(frame => frame.ToCharArray());
+            var ballsForFrames = frames.Select(frame => frame.ToCharArray()).ToList();
 
             if (frames.All(ContainsNumber))
             {
                 return ballsForFrames
-                    .Select(f => ToFrameScore(f))
+                    .Select(f => ToFrameScore(f, ballsForFrames, ballsForFrames.IndexOf(f)))
                     .Aggregate((firstFrame, secondFrame) => firstFrame + secondFrame);
             }
 
@@ -27,11 +27,12 @@ namespace BowlingGameKata
             return 300;
         }
 
-        private int ToFrameScore(char[] frame)
+        private int ToFrameScore(char[] frame, IList<char[]> ballsForFrames, int indexOf)
         {
-            if (frame.Contains("/"))
+            if (frame.Any(ball => ball == '/'))
             {
-                return 10;
+                var nextFrame = ballsForFrames[indexOf + 1];
+                return 10 + ToBallScore(nextFrame[0]);
             }
 
             return frame
