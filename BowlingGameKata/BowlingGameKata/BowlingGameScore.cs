@@ -8,7 +8,8 @@ namespace BowlingGameKata
     {
         public int Calculate(string gameResult)
         {
-            var mainFrames = gameResult.Split(new []{"||"}, StringSplitOptions.RemoveEmptyEntries);
+            var mainFrames = gameResult
+                .Split(new []{"||"}, StringSplitOptions.RemoveEmptyEntries);
             var frames = mainFrames[0].Split('|');
             var ballsForFrames = frames.Select(frame => frame.ToCharArray()).ToList();
 
