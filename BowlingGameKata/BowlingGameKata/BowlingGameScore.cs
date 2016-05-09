@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace BowlingGameKata
 {
@@ -8,6 +9,8 @@ namespace BowlingGameKata
         {
             var throws = bowlerThrows
                 .Split(new []{"||"}, StringSplitOptions.RemoveEmptyEntries);
+
+            var balls = bowlerThrows.ToCharArray().Where(x => x != '|');
 
             var mandatoryThrows = throws[0].Split('|');
 
