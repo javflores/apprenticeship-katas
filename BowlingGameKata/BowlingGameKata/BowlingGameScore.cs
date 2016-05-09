@@ -4,20 +4,21 @@ namespace BowlingGameKata
 {
     public class BowlingGameScore
     {
-        public int Calculate(string gameResult)
+        public int Calculate(string bowlerThrows)
         {
-            var mainFrames = gameResult
+            var throws = bowlerThrows
                 .Split(new []{"||"}, StringSplitOptions.RemoveEmptyEntries);
-            var frames = mainFrames[0].Split('|');
+
+            var mandatoryThrows = throws[0].Split('|');
 
             int score = 0;
-            for (var i = 0; i < frames.Length - 1; i++)
+            for (var frameIndex = 0; frameIndex < mandatoryThrows.Length - 1; frameIndex++)
             {
-                var frame = new Frame(frames[i]);
-                score += frame.Score(frames[i + 1].ToCharArray());
+                score += new Frame(mandatoryThrows[frameIndex])
+                    .Score(mandatoryThrows[frameIndex + 1]);
             }
 
-            score += new Frame(frames[frames.Length - 1]).Score(new char[] {});
+            score += new Frame(mandatoryThrows[mandatoryThrows.Length - 1]).Score("");
 
             return score;
         }

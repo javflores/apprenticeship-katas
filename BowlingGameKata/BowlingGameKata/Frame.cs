@@ -7,53 +7,56 @@ namespace BowlingGameKata
     {
         private const char Strike = 'X';
         private const char Spare = '/';
-        private readonly IList<char> _pinsKnocked;
+        private readonly string _frameThrows;
 
-        public Frame(string frame)
+        public Frame(string frameThrows)
         {
-            _pinsKnocked = frame.ToCharArray();
+            _frameThrows = frameThrows;
         }
 
-        public int Score(char[] pinsKnockedNextFrame)
+        public int Score(string nextFrameThrows)
         {
-            if (_pinsKnocked.Contains(Spare))
+            if (_frameThrows.Contains(Strike))
             {
-                return 10 + Score(pinsKnockedNextFrame[0]);
+                return 10 + ScoreNextTwoBalls(nextFrameThrows);
             }
 
-            if (_pinsKnocked.Contains(Strike))
+            if (_frameThrows.Contains(Spare))
             {
-                return 10 + NextFrameScore(pinsKnockedNextFrame);
+                return 10 + ScoreNextBall(nextFrameThrows);
             }
 
-            return _pinsKnocked
-                .Select(ball => Score(ball))
-                .Aggregate((firstScore, secondScore) => firstScore + secondScore);
+            return ScoreNextTwoBalls(_frameThrows);
         }
 
-        private int NextFrameScore(char[] pinsKnockedNextFrame)
+        private int ScoreNextTwoBalls(string nextFrameThrows)
         {
-            if (!pinsKnockedNextFrame.Any())
+            if (nextFrameThrows == string.Empty)
             {
                 return 0;
             }
 
-            if (pinsKnockedNextFrame.Contains(Spare) || pinsKnockedNextFrame.Contains(Strike))
+            if (nextFrameThrows.Contains(Spare) || nextFrameThrows.Contains(Strike))
             {
                 return 10;
             }
 
-            return Score(pinsKnockedNextFrame[0]) + Score(pinsKnockedNextFrame[1]);
+            return ScoreForPinsKnocked(nextFrameThrows[0]) + ScoreForPinsKnocked(nextFrameThrows[1]);
         }
 
-        private static int Score(char ball)
+        private int ScoreNextBall(string nextFrameThrows)
         {
-            if (char.IsNumber(ball))
+            return ScoreForPinsKnocked(nextFrameThrows[0]);
+        }
+
+        private int ScoreForPinsKnocked(char pinsThrow)
+        {
+            if (char.IsNumber(pinsThrow))
             {
-                return (int) char.GetNumericValue(ball);
+                return (int) char.GetNumericValue(pinsThrow);
             }
 
-            if (ball == Strike)
+            if (pinsThrow == Strike)
             {
                 return 10;
             }
