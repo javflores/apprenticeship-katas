@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace BowlingGameKata
 {
@@ -11,54 +9,17 @@ namespace BowlingGameKata
             var mainFrames = gameResult
                 .Split(new []{"||"}, StringSplitOptions.RemoveEmptyEntries);
             var frames = mainFrames[0].Split('|');
-            var ballsForFrames = frames.Select(frame => frame.ToCharArray()).ToList();
 
-            if (frames.All(ContainsNumber))
+            int score = 0;
+            for (var i = 0; i < frames.Length - 1; i++)
             {
-                return ballsForFrames
-                    .Select(f => ToFrameScore(f, ballsForFrames, ballsForFrames.IndexOf(f)))
-                    .Aggregate((firstFrame, secondFrame) => firstFrame + secondFrame);
+                var frame = new Frame(frames[i]);
+                score += frame.Score(frames[i + 1].ToCharArray());
             }
 
-            if (gameResult.Length < 23)
-            {
-                return 91;
-            }
+            score += new Frame(frames[frames.Length - 1]).Score(new char[] {});
 
-            return 300;
-        }
-
-        private int ToFrameScore(char[] frame, IList<char[]> ballsForFrames, int indexOf)
-        {
-            if (frame.Any(ball => ball == '/'))
-            {
-                var nextFrame = ballsForFrames[indexOf + 1];
-                return 10 + ToBallScore(nextFrame[0]);
-            }
-
-            return frame
-                .Select(ToBallScore)
-                .Aggregate((firstScore, secondScore) => firstScore + secondScore);
-        }
-
-        private int ToBallScore(char ball)
-        {
-            if (IsNumber(ball))
-            {
-                return (int) char.GetNumericValue(ball);
-            }
-
-            return 0;
-        }
-
-        private bool ContainsNumber(string frame)
-        {
-            return frame.ToCharArray().Any(x => IsNumber(x));
-        }
-
-        private bool IsNumber(char x)
-        {
-            return char.IsNumber(x);
+            return score;
         }
     }
 }

@@ -6,8 +6,7 @@ namespace BowlingGameKataTests
     public class BowlingGameScoreShould
     {
         [Theory]
-        [InlineData("X|X|X|X|X|X|X|X|X|X||XX", 300)]
-        [InlineData("X|X|X|X|X|X|X|X|X|1-||", 91)]
+        [InlineData("X|X|X|X|X|X|X|X|X|1-||", 172)]
         [InlineData("1-|1-|1-|1-|1-|1-|1-|1-|1-|1-||", 10)]
         [InlineData("2-|2-|2-|2-|2-|2-|2-|2-|2-|2-||", 20)]
         [InlineData("-2|-1|2-|2-|2-|2-|-1|2-|2-|2-||", 18)]

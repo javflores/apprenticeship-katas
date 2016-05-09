@@ -33,6 +33,11 @@ namespace BowlingGameKata
 
         private int NextFrameScore(char[] pinsKnockedNextFrame)
         {
+            if (!pinsKnockedNextFrame.Any())
+            {
+                return 0;
+            }
+
             if (pinsKnockedNextFrame.Contains(Spare) || pinsKnockedNextFrame.Contains(Strike))
             {
                 return 10;

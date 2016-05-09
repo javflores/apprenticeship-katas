@@ -20,6 +20,7 @@ namespace BowlingGameKataTests
         [InlineData("X", new[] { '-', '1' }, 11)]
         [InlineData("X", new[] { '1', '/' }, 20)]
         [InlineData("X", new[] { 'X' }, 20)]
+        [InlineData("X", new char[] {}, 10)]
         public void have_a_score(string frame, char[] followingFrame, int expectedScore)
         {
             int frameScore = new Frame(frame).Score(followingFrame);
