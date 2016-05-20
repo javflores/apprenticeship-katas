@@ -1,27 +1,30 @@
 ﻿namespace TheShoppingBasket.Domain.Product
 {
-    public class Product
+    public abstract class Product
     {
+        public int Quantity;
         private readonly string _name;
 
-        public Product(string name)
+        protected Product(string name)
         {
             _name = name;
         }
 
-        public virtual Money Cost()
+        public abstract Money Price { get; }
+
+        public void AddQuantity(int quantity)
         {
-            return new Money();
+            Quantity += quantity;
         }
 
-        public override bool Equals(object anotherProduct)
+        public Money Cost()
         {
-            return ((Product)anotherProduct)._name == _name;
+            return Price*Quantity;
         }
 
-        public static implicit operator string(Product product)
+        public override bool Equals(object product)
         {
-            return product._name;
+            return ((Product)product)._name == _name;
         }
     }
 }

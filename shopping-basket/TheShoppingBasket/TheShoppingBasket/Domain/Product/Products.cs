@@ -15,6 +15,13 @@ namespace TheShoppingBasket.Domain.Product
 
         public void Add(Product product)
         {
+            var existingProduct = _products.SingleOrDefault(p => p.Equals(product));
+            if (existingProduct != null)
+            {
+                existingProduct.AddQuantity(product.Quantity);
+                return;
+            }
+            
             _products.Add(product);
         }
 

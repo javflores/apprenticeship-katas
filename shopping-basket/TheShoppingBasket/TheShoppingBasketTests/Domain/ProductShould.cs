@@ -1,4 +1,5 @@
-﻿using TheShoppingBasket.Domain;
+﻿using NSubstitute;
+using TheShoppingBasket.Domain;
 using TheShoppingBasket.Domain.Product;
 using Xunit;
 
@@ -7,29 +8,41 @@ namespace TheShoppingBasketTests.Domain
     public class ProductShould
     {
         [Fact]
-        public void equal_to_another_product_when_product_name_is_same()
+        public void initialize_with_quantity_zero()
         {
-            Product originalProduct = new Product("bread");
-            Product anotherProduct = new Product("bread");
-
-            Assert.Equal(originalProduct, anotherProduct);
+            Product product = Substitute.For<Product>("dummy");
+            Assert.Equal(0, product.Quantity);
         }
 
         [Fact]
-        public void not_equal_to_another_product_when_product_name_is_different()
+        public void update_quantity_when_adding_more()
         {
-            Product originalProduct = new Product("bread");
-            Product anotherProduct = new Product("milk");
+            Product product = Substitute.For<Product>("dummy");
 
-            Assert.NotEqual(originalProduct, anotherProduct);
+            product.AddQuantity(2);
+
+            Assert.Equal(2, product.Quantity);
         }
 
         [Fact]
-        public void have_default_cost()
+        public void cost_price_times_quantity()
         {
-            Product product = new Product("dont-exist-yet");
+            Product product = Substitute.For<Product>("dummy");
+            var productPrice = new Money(1.0m);
+            product.Price.Returns(productPrice);
 
-            Assert.Equal(new Money(), product.Cost());
+            product.AddQuantity(2);
+
+            Assert.Equal(productPrice * 2, product.Cost());
+        }
+
+        [Fact]
+        public void equal_to_another_product_when_name_is_same()
+        {
+            Product product = Substitute.For<Product>("dummy");
+            Product anotherProduct = Substitute.For<Product>("dummy");
+
+            Assert.True(product.Equals(anotherProduct));
         }
     }
 }

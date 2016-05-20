@@ -20,16 +20,13 @@ namespace TheShoppingBasketTests
             _application = new Application(_shoppingBasket,_display);
         }
 
-        [Theory]
-        [InlineData("Add 1 bread", "bread", 1)]
-        [InlineData("Add 3 milk", "milk", 3)]
-        public void add_items_to_shopping_basket_when_user_command_contains_add(string command, string productName, int quantity)
+        [Fact]
+        public void add_items_to_shopping_basket_when_user_command_contains_add()
         {
-            _application.Execute(command);
+            _application.Execute("Add 3 milk");
 
-            Quantity expectedQuantity = new Quantity(quantity);
-            _shoppingBasket.Received().Add(
-                Arg.Is<Product>(p => p.Equals(new Product(productName))), Arg.Is<Quantity>(q => q.Equals(expectedQuantity)));
+            _shoppingBasket.Received()
+                .Add(Arg.Is<Product>(p => p.Equals(new Milk()) && p.Quantity == 3));
         }
 
         [Fact]

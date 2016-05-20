@@ -45,8 +45,26 @@ namespace TheShoppingBasketTests.Domain
             Assert.Equal(new Money(severalProductsCost), cost);
         }
 
+        [Fact]
+        public void return_cost_when_contains_several_products_of_same_type()
+        {
+            AddProducts(new Bread(), 4);
+            AddProducts(new Bread(), 2);
+
+            Money cost = _products.Cost();
+
+            var severalProductsCost = 6m;
+            Assert.Equal(new Money(severalProductsCost), cost);
+        }
+
         private void AddProduct(Product product)
         {
+            AddProducts(product, 1);
+        }
+
+        private void AddProducts(Product product, int quantity)
+        {
+            product.AddQuantity(quantity);
             _products.Add(product);
         }
     }
