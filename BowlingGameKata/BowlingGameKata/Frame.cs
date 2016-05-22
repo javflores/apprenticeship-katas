@@ -17,44 +17,28 @@ namespace BowlingGameKata
         {
             if (_frame == Strike)
             {
-                return 10 + StrikeBonus(nextFrames);
+                return 10 + nextFrames[0].StrikeBonus(nextFrames);
             }
 
             if (_frame.Contains(Spare))
             {
-                return 10 + SpareBonus(nextFrames);
+                return 10 + nextFrames[0].SpareBonus();
             }
 
-            return Score();
-        }
-
-        private int StrikeBonus(IList<Frame> nextFrames)
-        {
-            var nextFrame = nextFrames[0];
-            if (nextFrame.IsStrike())
-            {
-                return 10 + nextFrames[1].ScoreFirstBall();
-            }
-
-            return nextFrame.Score();
-        }
-
-        private int SpareBonus(IList<Frame> nextFrames)
-        {
-            return nextFrames[0].ScoreFirstBall();
-        }
-
-        public bool IsStrike()
-        {
-            return _frame.Equals(Strike);
-        }
-
-        private int Score()
-        {
             return ScoreBall(0) + ScoreBall(1);
         }
 
-        public int ScoreFirstBall()
+        public int StrikeBonus(IList<Frame> nextFrames)
+        {
+            if (_frame != Strike)
+            {
+                return ScoreBall(0) + ScoreBall(1);
+            }
+
+            return 10 + nextFrames[1].SpareBonus();
+        }
+
+        public int SpareBonus()
         {
             return ScoreBall(0);
         }
