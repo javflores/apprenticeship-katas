@@ -1,61 +1,46 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace BowlingGameKata
 {
     public class Frame : IFrame, INextFrame
     {
-        private const string Strike = "X";
-        private const string Spare = "/";
-        public readonly string _frame;
+        private const int FullFrameScore = 10;
+        private readonly IList<Ball> _balls;
 
         public Frame(string frame)
         {
-            _frame = frame;
+            _balls = frame.Select(ball => new Ball(ball)).ToList();
         }
 
         public int Score(IList<INextFrame> nextFrames)
         {
-            if (_frame == Strike)
+            if (_balls.Any(x => x.DidStrike()))
             {
-                return 10 + nextFrames[0].StrikeBonus(nextFrames);
+                return FullFrameScore + nextFrames[0].StrikeBonus(nextFrames);
             }
 
-            if (_frame.Contains(Spare))
+            if (_balls.Any(x => x.DidSpare()))
             {
-                return 10 + nextFrames[0].SpareBonus();
+                return FullFrameScore + nextFrames[0].SpareBonus();
             }
 
-            return ScoreBall(0) + ScoreBall(1);
+            return _balls.Sum(ball => ball.Score());
         }
 
         int INextFrame.StrikeBonus(IList<INextFrame> nextFrames)
         {
-            if (_frame != Strike)
+            if (!_balls.Any(x => x.DidStrike()))
             {
-                return ScoreBall(0) + ScoreBall(1);
+                return _balls.Sum(ball => ball.Score());
             }
 
-            return 10 + nextFrames[1].SpareBonus();
+            return FullFrameScore + nextFrames[1].SpareBonus();
         }
 
         int INextFrame.SpareBonus()
         {
-            if (_frame != Strike)
-            {
-                return ScoreBall(0);
-            }
-
-            return 10;
-        }
-
-        private int ScoreBall(int ballIndex)
-        {
-            if (_frame[ballIndex] == '-')
-            {
-                return 0;
-            }
-
-            return (int)char.GetNumericValue(_frame[ballIndex]);
+            return _balls.First().Score();
         }
     }
 }
