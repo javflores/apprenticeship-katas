@@ -10,7 +10,9 @@ namespace BowlingGameKata
 
         public Frame(string frame)
         {
-            _balls = frame.Select(ball => new Ball(ball)).ToList();
+            _balls = frame
+                .Select(ball => new Ball(ball))
+                .ToList();
         }
 
         public int Score(IList<INextFrame> nextFrames)
@@ -30,12 +32,17 @@ namespace BowlingGameKata
 
         int INextFrame.StrikeBonus(IList<INextFrame> nextFrames)
         {
-            if (!_balls.Any(x => x.DidStrike()))
+            if (_balls.Any(x => x.DidStrike()))
             {
-                return _balls.Sum(ball => ball.Score());
+                return FullFrameScore + nextFrames[1].SpareBonus();
             }
 
-            return FullFrameScore + nextFrames[1].SpareBonus();
+            if (_balls.Any(x => x.DidSpare()))
+            {
+                return FullFrameScore;
+            }
+
+            return _balls.Sum(ball => ball.Score());
         }
 
         int INextFrame.SpareBonus()
