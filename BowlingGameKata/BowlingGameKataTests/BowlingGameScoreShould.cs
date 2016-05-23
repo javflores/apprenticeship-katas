@@ -18,6 +18,11 @@ namespace BowlingGameKataTests
         [InlineData("X|X|X|X|X|X|X|X|X|11||", 245)]
         [InlineData("X|X|X|X|X|X|X|X|X|16||", 255)]
         [InlineData("X|X|X|X|X|X|X|X|X|1/||1", 262)]
+        [InlineData("X|X|X|X|X|X|X|X|X|1/||X", 271)]
+        [InlineData("X|X|X|X|X|X|X|X|X|X||11", 273)]
+        [InlineData("X|X|X|X|X|X|X|X|X|X||--", 270)]
+        [InlineData("X|X|X|X|X|X|X|X|X|X||XX", 300)]
+        [InlineData("X|7/|9-|X|-8|8/|-6|X|X|X||81", 167)]
         public void calculate_score(string bowlerThrows, int expectedScore)
         {
             int score = new BowlingGameScore().Calculate(bowlerThrows);

@@ -11,7 +11,7 @@ namespace BowlingGameKata
 
         public int Calculate(string bowlerThrows)
         {
-            IList<Frame> frames = ParseFrames(bowlerThrows);
+            IList<Frame> frames = FindFrames(bowlerThrows);
 
             int score = 0;
 
@@ -24,7 +24,7 @@ namespace BowlingGameKata
             return score;
         }
 
-        private IList<Frame> ParseFrames(string bowlerThrows)
+        private IList<Frame> FindFrames(string bowlerThrows)
         {
             var frameSets = bowlerThrows.Split(new[] {BonusBallsSeparator}, StringSplitOptions.RemoveEmptyEntries);
 

@@ -32,9 +32,9 @@ namespace BowlingGameKata
 
         int INextFrame.StrikeBonus(IList<INextFrame> nextFrames)
         {
-            if (_balls.Any(x => x.DidStrike()))
+            if (_balls.Count == 1)
             {
-                return FullFrameScore + nextFrames[1].SpareBonus();
+                return _balls.Single().Score() + nextFrames[1].SpareBonus();
             }
 
             if (_balls.Any(x => x.DidSpare()))
