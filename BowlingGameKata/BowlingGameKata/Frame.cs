@@ -2,7 +2,7 @@
 
 namespace BowlingGameKata
 {
-    public class Frame
+    public class Frame : IFrame, INextFrame
     {
         private const string Strike = "X";
         private const string Spare = "/";
@@ -13,7 +13,7 @@ namespace BowlingGameKata
             _frame = frame;
         }
 
-        public int Score(IList<Frame> nextFrames)
+        public int Score(IList<INextFrame> nextFrames)
         {
             if (_frame == Strike)
             {
@@ -28,7 +28,7 @@ namespace BowlingGameKata
             return ScoreBall(0) + ScoreBall(1);
         }
 
-        public int StrikeBonus(IList<Frame> nextFrames)
+        int INextFrame.StrikeBonus(IList<INextFrame> nextFrames)
         {
             if (_frame != Strike)
             {
@@ -38,9 +38,14 @@ namespace BowlingGameKata
             return 10 + nextFrames[1].SpareBonus();
         }
 
-        public int SpareBonus()
+        int INextFrame.SpareBonus()
         {
-            return ScoreBall(0);
+            if (_frame != Strike)
+            {
+                return ScoreBall(0);
+            }
+
+            return 10;
         }
 
         private int ScoreBall(int ballIndex)
@@ -48,11 +53,6 @@ namespace BowlingGameKata
             if (_frame[ballIndex] == '-')
             {
                 return 0;
-            }
-
-            if (_frame[ballIndex] == 'X')
-            {
-                return 10;
             }
 
             return (int)char.GetNumericValue(_frame[ballIndex]);

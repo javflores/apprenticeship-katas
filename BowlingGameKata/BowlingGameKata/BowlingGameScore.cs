@@ -34,9 +34,9 @@ namespace BowlingGameKata
                 .ToList();
         }
 
-        private List<Frame> NextFrames(IList<Frame> frames, int frameIndex)
+        private List<INextFrame> NextFrames(IList<Frame> frames, int frameIndex)
         {
-            return frames.Where(f => frames.IndexOf(f) > frameIndex).ToList();
+            return new List<INextFrame>(frames.Where(f => frames.IndexOf(f) > frameIndex));
         }
     }
 }
