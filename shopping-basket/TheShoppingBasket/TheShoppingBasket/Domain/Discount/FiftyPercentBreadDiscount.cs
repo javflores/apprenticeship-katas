@@ -6,7 +6,9 @@ namespace TheShoppingBasket.Domain.Discount
     {
         public Money ApplyTo(Products products)
         {
-            if (products.MoreThan(0, new Bread()) && products.MoreThan(1, new Butter()))
+            var butter = products.Find(new Butter());
+            var bread = products.Find(new Bread());
+            if (bread.MoreThan(0) && butter.MoreThan(1))
             {
                 return new Bread().Price.FiftyPercent();
             }

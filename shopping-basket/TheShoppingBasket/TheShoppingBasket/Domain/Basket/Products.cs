@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace TheShoppingBasket.Domain.Basket
@@ -41,17 +40,7 @@ namespace TheShoppingBasket.Domain.Basket
             return cost;
         }
 
-        public bool MoreThan(int minimumQuantity, Product product)
-        {
-            return Find(product).MoreThan(minimumQuantity);
-        }
-
-        public int PacksOf(int packQuantity, Product product)
-        {
-            return Find(product).PacksOf(packQuantity);
-        }
-
-        private Product Find(Product product)
+        public Product Find(Product product)
         {
             return _products
                 .Where(p => p.Equals(product))

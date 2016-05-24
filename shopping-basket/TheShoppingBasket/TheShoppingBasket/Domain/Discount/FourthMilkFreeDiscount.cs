@@ -6,7 +6,8 @@ namespace TheShoppingBasket.Domain.Discount
     {
         public Money ApplyTo(Products products)
         {
-            var numberOfTimesToApplyOffer = products.PacksOf(4, new Milk());
+            var milk = products.Find(new Milk());
+            var numberOfTimesToApplyOffer = milk.PacksOf(4);
 
             return new Milk().Price * numberOfTimesToApplyOffer;
         }
