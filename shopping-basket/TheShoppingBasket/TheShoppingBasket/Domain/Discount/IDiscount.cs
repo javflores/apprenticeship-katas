@@ -1,4 +1,4 @@
-﻿using TheShoppingBasket.Domain.Product;
+﻿using TheShoppingBasket.Domain.Basket;
 using TheShoppingBasket.Services;
 
 namespace TheShoppingBasket.Domain.Discount

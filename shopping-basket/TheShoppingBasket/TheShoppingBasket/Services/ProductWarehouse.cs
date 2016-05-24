@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using TheShoppingBasket.Domain.Product;
+using TheShoppingBasket.Domain.Basket;
 
 namespace TheShoppingBasket.Services
 {
@@ -24,19 +24,13 @@ namespace TheShoppingBasket.Services
 
         public Product Find(string product, int quantity)
         {
-            if (_productCatalogue.ContainsKey(product))
-            {
-                return PrepareProduct(product, quantity);
-            }
-
-            return new NullProduct();
-            
+          return _productCatalogue.ContainsKey(product) ? PrepareProduct(product, quantity) : new NullProduct();
         }
 
         private Product PrepareProduct(string product, int quantity)
         {
             var productInCatalogue = _productCatalogue[product];
-            productInCatalogue.AddQuantity(quantity);
+            productInCatalogue.IncreaseQuantityBy(quantity);
 
             return productInCatalogue;
         }

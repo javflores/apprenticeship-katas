@@ -1,6 +1,6 @@
 ﻿using TheShoppingBasket.Domain;
+using TheShoppingBasket.Domain.Basket;
 using TheShoppingBasket.Domain.Discount;
-using TheShoppingBasket.Domain.Product;
 using Xunit;
 
 namespace TheShoppingBasketTests.Domain
@@ -29,7 +29,7 @@ namespace TheShoppingBasketTests.Domain
         private void AddMilks(Products products, int quantity)
         {
             var milk = new Milk();
-            milk.AddQuantity(quantity);
+            milk.IncreaseQuantityBy(quantity);
             products.Add(milk);
         }
     }

@@ -1,4 +1,4 @@
-﻿namespace TheShoppingBasket.Domain.Product
+﻿namespace TheShoppingBasket.Domain.Basket
 {
     public abstract class Product
     {
@@ -12,14 +12,14 @@
 
         public abstract Money Price { get; }
 
-        public void AddQuantity(int quantity)
+        public void IncreaseQuantityBy(int quantity)
         {
             Quantity += quantity;
         }
 
         public Money Cost()
         {
-            return Price*Quantity;
+            return Price * Quantity;
         }
 
         public override bool Equals(object product)

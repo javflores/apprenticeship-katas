@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using TheShoppingBasket.Domain.Product;
+using TheShoppingBasket.Domain.Basket;
 
 namespace TheShoppingBasket.Domain.Discount
 {
@@ -16,13 +16,9 @@ namespace TheShoppingBasket.Domain.Discount
 
         private int NumberOfTimesToApplyOffer(Products products)
         {
-            var milk = products.SingleOrDefault(product => product.Equals(new Milk()));
-            if (milk == null)
-            {
-                return 0;
-            }
+            var quantityOfMilk = products.QuantityOf(new Milk());
 
-            return milk.Quantity/4;
+            return quantityOfMilk / 4;
         }
 
         private Money ApplyOffer(int numberOfTimesToApplyOffer)

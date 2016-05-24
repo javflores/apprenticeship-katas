@@ -1,5 +1,5 @@
 ﻿using TheShoppingBasket.Domain;
-using TheShoppingBasket.Domain.Product;
+using TheShoppingBasket.Domain.Basket;
 using Xunit;
 
 namespace TheShoppingBasketTests.Domain
@@ -75,7 +75,7 @@ namespace TheShoppingBasketTests.Domain
 
         private void AddProduct(Product product, int quantity)
         {
-            product.AddQuantity(quantity);
+            product.IncreaseQuantityBy(quantity);
             _shoppingBasket.Add(product);
         }
     }

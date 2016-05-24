@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using TheShoppingBasket.Domain.Product;
+using TheShoppingBasket.Domain.Basket;
 
 namespace TheShoppingBasket.Domain.Discount
 {
@@ -22,14 +22,10 @@ namespace TheShoppingBasket.Domain.Discount
 
         private bool CanApplyOffer(Products products)
         {
-            var butter = products.SingleOrDefault(product => product.Equals(new Butter()));
-            var bread = products.SingleOrDefault(product => product.Equals(new Bread()));
-            if (butter == null || bread == null)
-            {
-                return false;
-            }
+            var quantityOfButter = products.QuantityOf(new Butter());
+            var quantityOfBread = products.QuantityOf(new Bread());
 
-            return bread.Quantity > 0 && butter.Quantity > 1;
+            return quantityOfBread > 0 && quantityOfButter > 1;
         }
     }
 }

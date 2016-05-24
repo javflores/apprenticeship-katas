@@ -1,4 +1,4 @@
-namespace TheShoppingBasket.Domain.Product
+namespace TheShoppingBasket.Domain.Basket
 {
     public class Milk : Product
     {

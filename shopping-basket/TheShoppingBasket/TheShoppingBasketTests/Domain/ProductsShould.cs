@@ -1,5 +1,5 @@
 ﻿using TheShoppingBasket.Domain;
-using TheShoppingBasket.Domain.Product;
+using TheShoppingBasket.Domain.Basket;
 using Xunit;
 
 namespace TheShoppingBasketTests.Domain
@@ -16,7 +16,7 @@ namespace TheShoppingBasketTests.Domain
         [Fact]
         public void return_zero_cost_when_no_product_have_been_added()
         {
-            Money cost = _products.Cost();
+            Money cost = _products.TotalCost();
 
             Assert.Equal(new Money(0.0m), cost);
         }
@@ -26,7 +26,7 @@ namespace TheShoppingBasketTests.Domain
         {
             AddProduct(new Bread());
 
-            Money cost = _products.Cost();
+            Money cost = _products.TotalCost();
 
             var singleProductCost = 1.00m;
             Assert.Equal(new Money(singleProductCost), cost);
@@ -39,7 +39,7 @@ namespace TheShoppingBasketTests.Domain
             AddProduct(new Butter());
             AddProduct(new Bread());
 
-            Money cost = _products.Cost();
+            Money cost = _products.TotalCost();
 
             var severalProductsCost = 2.95m;
             Assert.Equal(new Money(severalProductsCost), cost);
@@ -51,7 +51,7 @@ namespace TheShoppingBasketTests.Domain
             AddProducts(new Bread(), 4);
             AddProducts(new Bread(), 2);
 
-            Money cost = _products.Cost();
+            Money cost = _products.TotalCost();
 
             var severalProductsCost = 6m;
             Assert.Equal(new Money(severalProductsCost), cost);
@@ -64,7 +64,7 @@ namespace TheShoppingBasketTests.Domain
 
         private void AddProducts(Product product, int quantity)
         {
-            product.AddQuantity(quantity);
+            product.IncreaseQuantityBy(quantity);
             _products.Add(product);
         }
     }
