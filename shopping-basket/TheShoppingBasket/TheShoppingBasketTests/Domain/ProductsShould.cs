@@ -24,25 +24,24 @@ namespace TheShoppingBasketTests.Domain
         [Fact]
         public void return_cost_of_single_product_added()
         {
-            AddProduct(new Bread());
+            var product = new Bread();
+            AddProduct(product);
 
-            Money cost = _products.TotalCost();
+            Money totalCost = _products.TotalCost();
 
-            var singleProductCost = 1.00m;
-            Assert.Equal(new Money(singleProductCost), cost);
+            var singleProductPrice = product.Price;
+            Assert.Equal(singleProductPrice, totalCost);
         }
 
         [Fact]
         public void return_cost_when_contains_several_products()
         {
-            AddProduct(new Milk());
-            AddProduct(new Butter());
-            AddProduct(new Bread());
+            AddSeveralProducts();
 
-            Money cost = _products.TotalCost();
+            Money totalCost = _products.TotalCost();
 
-            var severalProductsCost = 2.95m;
-            Assert.Equal(new Money(severalProductsCost), cost);
+            var severalProductsCost = new Money(2.95m);
+            Assert.Equal(severalProductsCost, totalCost);
         }
 
         [Fact]
@@ -51,15 +50,22 @@ namespace TheShoppingBasketTests.Domain
             AddProducts(new Bread(), 4);
             AddProducts(new Bread(), 2);
 
-            Money cost = _products.TotalCost();
+            Money totalCost = _products.TotalCost();
 
-            var severalProductsCost = 6m;
-            Assert.Equal(new Money(severalProductsCost), cost);
+            var severalProductsCost = new Money(6m);
+            Assert.Equal(severalProductsCost, totalCost);
         }
 
         private void AddProduct(Product product)
         {
             AddProducts(product, 1);
+        }
+
+        private void AddSeveralProducts()
+        {
+            AddProduct(new Milk());
+            AddProduct(new Butter());
+            AddProduct(new Bread());
         }
 
         private void AddProducts(Product product, int quantity)

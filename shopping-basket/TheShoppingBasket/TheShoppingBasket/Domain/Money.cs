@@ -41,12 +41,17 @@ namespace TheShoppingBasket.Domain
 
         public Money FiftyPercent()
         {
-            return new Money(_amount * 0.5m);
+            return Percentage(50m);
         }
 
         public override string ToString()
         {
             return $"{_amount.ToString("C", new CultureInfo("en-GB"))}";
+        }
+
+        private Money Percentage(decimal percentage)
+        {
+            return new Money(_amount * percentage * 0.01m);
         }
     }
 }

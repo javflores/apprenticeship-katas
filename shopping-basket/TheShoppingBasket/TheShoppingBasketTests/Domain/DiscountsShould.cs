@@ -20,8 +20,8 @@ namespace TheShoppingBasketTests.Domain
 
             Money discount = _discounts.ApplyTo(products);
 
-            var severalDiscountsApplied = 1.65m;
-            Assert.Equal(new Money(severalDiscountsApplied), discount);
+            var severalDiscountsApplied = new Money(1.65m);
+            Assert.Equal(severalDiscountsApplied, discount);
         }
 
         private void AddProduct(Products products, Product product, int quantity)

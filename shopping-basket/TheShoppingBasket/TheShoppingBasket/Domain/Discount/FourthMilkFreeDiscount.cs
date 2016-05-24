@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using TheShoppingBasket.Domain.Basket;
+﻿using TheShoppingBasket.Domain.Basket;
 
 namespace TheShoppingBasket.Domain.Discount
 {
