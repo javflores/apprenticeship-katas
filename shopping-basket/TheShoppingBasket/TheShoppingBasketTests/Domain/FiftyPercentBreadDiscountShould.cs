@@ -22,7 +22,7 @@ namespace TheShoppingBasketTests.Domain
             AddButter(products, butterQuantity);
             AddBread(products, breadQuantity);
 
-            Money discount = fiftyPercentBreadDiscount.Apply(products);
+            Money discount = fiftyPercentBreadDiscount.ApplyTo(products);
 
             Assert.Equal(new Money(expectedDiscount), discount);
         }

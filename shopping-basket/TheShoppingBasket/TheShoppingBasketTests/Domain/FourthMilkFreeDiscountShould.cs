@@ -21,7 +21,7 @@ namespace TheShoppingBasketTests.Domain
             Products products = new Products();
             AddMilks(products, quantity);
 
-            Money discount = _fourthMilkFreeDiscount.Apply(products);
+            Money discount = _fourthMilkFreeDiscount.ApplyTo(products);
 
             Assert.Equal(new Money(expectedDiscount), discount);
         }

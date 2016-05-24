@@ -19,7 +19,7 @@ namespace TheShoppingBasket.Domain.Discount
         public Money ApplyTo(Products products)
         {
             return _discounts
-                .Select(discount => discount.Apply(products))
+                .Select(discount => discount.ApplyTo(products))
                 .Aggregate((discount, nextDiscount) => discount + nextDiscount);
         }
     }

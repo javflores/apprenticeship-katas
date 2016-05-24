@@ -5,6 +5,6 @@ namespace TheShoppingBasket.Domain.Discount
 {
     public interface IDiscount
     {
-        Money Apply(Products products);
+        Money ApplyTo(Products products);
     }
 }

@@ -211,3 +211,5 @@ FakesAssemblies/
 GeneratedArtifacts/
 _Pvt_Extensions/
 ModelManifest.xml
+/shopping-basket/TheShoppingBasket/.idea/*.xml
+/shopping-basket/TheShoppingBasket/*.iml
