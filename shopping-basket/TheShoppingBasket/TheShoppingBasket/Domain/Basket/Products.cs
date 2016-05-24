@@ -20,7 +20,7 @@ namespace TheShoppingBasket.Domain.Basket
 
             if (existingProduct != null)
             {
-                existingProduct.IncreaseQuantityBy(product.Quantity);
+                existingProduct.IncreaseQuantity(product);
                 return;
             }
             
@@ -41,9 +41,14 @@ namespace TheShoppingBasket.Domain.Basket
             return cost;
         }
 
-        public int QuantityOf(Product product)
+        public bool MoreThan(int minimumQuantity, Product product)
         {
-            return Find(product).Quantity;
+            return Find(product).MoreThan(minimumQuantity);
+        }
+
+        public int PacksOf(int packQuantity, Product product)
+        {
+            return Find(product).PacksOf(packQuantity);
         }
 
         private Product Find(Product product)

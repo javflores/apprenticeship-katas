@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using TheShoppingBasket.Domain.Basket;
 
 namespace TheShoppingBasket.Services
@@ -10,15 +11,15 @@ namespace TheShoppingBasket.Services
 
     internal class ProductWarehouse : IProductWarehouse
     {
-        private readonly Dictionary<string, Product> _productCatalogue;
+        private readonly Dictionary<string, Func<int, Product>> _productCatalogue;
 
         public ProductWarehouse()
         {
-            _productCatalogue = new Dictionary<string, Product>()
+            _productCatalogue = new Dictionary<string, Func<int, Product>>
             {
-                ["butter"] = new Butter(),
-                ["milk"] = new Milk(),
-                ["bread"] = new Bread()
+                ["bread"] = (quantity) => new Bread(quantity),
+                ["milk"] = (quantity) => new Milk(quantity),
+                ["butter"] = (quantity) => new Butter(quantity)
             };
         }
 
@@ -29,10 +30,7 @@ namespace TheShoppingBasket.Services
 
         private Product PrepareProduct(string product, int quantity)
         {
-            var productInCatalogue = _productCatalogue[product];
-            productInCatalogue.IncreaseQuantityBy(quantity);
-
-            return productInCatalogue;
+            return _productCatalogue[product](quantity);
         }
     }
 }

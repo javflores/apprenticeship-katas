@@ -26,7 +26,7 @@ namespace TheShoppingBasketTests
             _application.Execute("Add 3 milk");
 
             _shoppingBasket.Received()
-                .Add(Arg.Is<Product>(p => p.Equals(new Milk()) && p.Quantity == 3));
+                .Add(Arg.Is<Product>(p => p.Equals(new Milk(3))));
         }
 
         [Fact]

@@ -4,7 +4,9 @@
     {
         public override Money Price => new Money(1.00m);
 
-        public Bread() : base("bread")
+        public Bread() : base("bread") {}
+
+        public Bread(int quantity) : base("bread", quantity)
         {
         }
     }

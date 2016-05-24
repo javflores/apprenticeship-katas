@@ -4,7 +4,9 @@ namespace TheShoppingBasket.Domain.Basket
     {
         public override Money Price => new Money(0.80m);
 
-        public Butter() : base("butter")
+        public Butter() : base("butter") {}
+
+        public Butter(int quantity) : base("butter", quantity)
         {
         }
     }

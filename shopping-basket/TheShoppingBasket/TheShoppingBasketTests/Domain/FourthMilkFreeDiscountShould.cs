@@ -28,8 +28,7 @@ namespace TheShoppingBasketTests.Domain
 
         private void AddMilks(Products products, int quantity)
         {
-            var milk = new Milk();
-            milk.IncreaseQuantityBy(quantity);
+            var milk = new Milk(quantity);
             products.Add(milk);
         }
     }

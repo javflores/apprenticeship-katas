@@ -61,21 +61,20 @@ namespace TheShoppingBasketTests.Domain
 
         private void AddBread(int quantity)
         {
-            AddProduct(new Bread(), quantity);
+            AddProduct(new Bread(quantity));
         }
 
         private void AddButter(int quantity)
         {
-            AddProduct(new Butter(), quantity);
+            AddProduct(new Butter(quantity));
         }
         private void AddMilk(int quantity)
         {
-            AddProduct(new Milk(), quantity);
+            AddProduct(new Milk(quantity));
         }
 
-        private void AddProduct(Product product, int quantity)
+        private void AddProduct(Product product)
         {
-            product.IncreaseQuantityBy(quantity);
             _shoppingBasket.Add(product);
         }
     }

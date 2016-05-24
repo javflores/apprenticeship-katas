@@ -14,9 +14,9 @@ namespace TheShoppingBasketTests.Domain
         {
             Products products = new Products();
 
-            AddProduct(products, new Butter(), 2);
-            AddProduct(products, new Bread(), 1);
-            AddProduct(products, new Milk(), 4);
+            AddProduct(products, new Butter(2));
+            AddProduct(products, new Bread(1));
+            AddProduct(products, new Milk(4));
 
             Money discount = _discounts.ApplyTo(products);
 
@@ -24,9 +24,8 @@ namespace TheShoppingBasketTests.Domain
             Assert.Equal(severalDiscountsApplied, discount);
         }
 
-        private void AddProduct(Products products, Product product, int quantity)
+        private void AddProduct(Products products, Product product)
         {
-            product.IncreaseQuantityBy(quantity);
             products.Add(product);
         }
     }
