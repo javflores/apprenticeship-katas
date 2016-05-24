@@ -18,6 +18,16 @@ namespace RomanNumeralsTests
         [InlineData(10, "X")]
         [InlineData(40, "XL")]
         [InlineData(44, "XLIV")]
+        [InlineData(50, "L")]
+        [InlineData(90, "XC")]
+        [InlineData(100, "C")]
+        [InlineData(400, "CD")]
+        [InlineData(500, "D")]
+        [InlineData(900, "CM")]
+        [InlineData(1000, "M")]
+        [InlineData(846, "DCCCXLVI")]
+        [InlineData(1999, "MCMXCIX")]
+        [InlineData(2008, "MMVIII")]
 
         public void convert_number_to_roman(int number, string expected)
         {

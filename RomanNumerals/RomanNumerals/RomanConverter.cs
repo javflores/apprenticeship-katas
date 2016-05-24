@@ -7,6 +7,13 @@ namespace RomanNumerals
         private readonly IDictionary<int, string> mappings = 
             new Dictionary<int, string>()
             {
+                { 1000, "M"},
+                { 900, "CM"},
+                { 500, "D"},
+                { 400, "CD"},
+                { 100, "C"},
+                { 90, "XC"},
+                { 50, "L"},
                 { 40, "XL"},
                 { 10, "X"},
                 { 9, "IX"},
@@ -17,21 +24,23 @@ namespace RomanNumerals
 
         public string Convert(int number)
         {
-            string result = string.Empty;
+            string roman = string.Empty;
             var mappingsEnumerator = mappings.GetEnumerator();
 
             while (mappingsEnumerator.MoveNext())
             {
-                var mapping = mappingsEnumerator.Current;
+                var arabicToRoman = mappingsEnumerator.Current;
+                var arabicNumeral = arabicToRoman.Key;
+                var romanNumeral = arabicToRoman.Value;
 
-                while (number >= mapping.Key)
+                while (number >= arabicNumeral)
                 {
-                    result += mapping.Value;
-                    number -= mapping.Key;
+                    roman += romanNumeral;
+                    number -= arabicNumeral;
                 }
             }
 
-            return result;
+            return roman;
         }
     }
 }
