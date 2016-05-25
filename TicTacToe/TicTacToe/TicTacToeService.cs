@@ -2,9 +2,15 @@
 {
     public class TicTacToeService
     {
-        public string Play(int row, int column)
+        public Board Play(Position position)
         {
-            return "X--------";
+            var board = "X--------";
+            if (position.Equals(new Position(0, 1)))
+            {
+                board = "-X-------";
+            }
+
+            return new Board(board);
         }
     }
 }

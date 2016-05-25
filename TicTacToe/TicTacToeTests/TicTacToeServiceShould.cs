@@ -7,11 +7,14 @@ namespace TicTacToeTests
     {
         [Theory]
         [InlineData(0, 0, "X--------")]
-        public void return_board_with_first_played_position(int row, int column, string expectedGame)
+        [InlineData(0, 1, "-X-------")]
+        public void return_board_with_first_played_position(int row, int column, string expectedBoard)
         {
-            string board = new TicTacToeService().Play(0, 0);
+            var position = new Position(row, column);
+            Board board = new TicTacToeService().Play(position);
 
-            Assert.Equal(expectedGame, board);
+            var boardAfterPlay = new Board(expectedBoard);
+            Assert.Equal(boardAfterPlay, board);
         }
     }
 }
