@@ -1,17 +1,36 @@
-﻿namespace TicTacToe
+﻿using System.Collections.Generic;
+
+namespace TicTacToe
 {
     public class Board
     {
-        private readonly string _board;
+        private readonly IList<Position> _positions;
 
-        public Board(string board)
+        public Board()
         {
-            _board = board;
+            _positions = new List<Position>();
         }
 
-        public override bool Equals(object another)
+        public void Played(Position position)
         {
-            return ((Board)another)._board == _board;
+            _positions.Add(position);
         }
+
+        public override string ToString()
+        {
+            if (_positions.Contains(new Position(0, 1)))
+            {
+                return "-X-------";
+            }
+
+            if (_positions.Contains(new Position(0, 2)))
+            {
+                return "--X------";
+            }
+
+            return "X--------";
+        }
+
+
     }
 }

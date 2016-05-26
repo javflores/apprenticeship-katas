@@ -2,15 +2,16 @@
 {
     public class TicTacToeService
     {
+        private readonly Board _board;
+
+        public TicTacToeService()
+        {
+            _board = new Board();
+        }
         public Board Play(Position position)
         {
-            var board = "X--------";
-            if (position.Equals(new Position(0, 1)))
-            {
-                board = "-X-------";
-            }
-
-            return new Board(board);
+            _board.Played(position);
+            return _board;
         }
     }
 }
