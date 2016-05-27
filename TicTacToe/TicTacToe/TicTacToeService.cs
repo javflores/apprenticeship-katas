@@ -1,18 +1,25 @@
-﻿using System.Collections.Generic;
-
-namespace TicTacToe
+﻿namespace TicTacToe
 {
     public class TicTacToeService
     {
-        private readonly IList<Position> _positions = new List<Position>();
+        private readonly Positions _positions = new Positions();
+        private readonly Players _players = new Players();
 
         public GameResult Play(Position position)
         {
-            _positions.Add(position);
+            var currentPlayer = _players.Swap();
 
-            if (_positions.Count == 9)
+            _positions.Play(position, currentPlayer);
+
+            if (_positions.AllFilledIn())
             {
                 return GameResult.Draw;
+            }
+
+            var winner = _positions.Winner();
+            if (winner != null)
+            {
+                return GameResult.XWin;
             }
 
             return GameResult.InProgress;

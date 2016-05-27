@@ -3,6 +3,7 @@
     public enum GameResult
     {
         InProgress,
-        Draw
+        Draw,
+        XWin
     }
 }
