@@ -10,11 +10,5 @@
             _row = row;
             _column = column;
         }
-
-        public override bool Equals(object another)
-        {
-            var anotherPosition = ((Position)another);
-            return anotherPosition._row == _row && anotherPosition._column == _column;
-        }
     }
 }

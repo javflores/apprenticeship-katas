@@ -5,16 +5,34 @@ namespace TicTacToeTests
 {
     public class TicTacToeServiceShould
     {
-        [Theory]
-        [InlineData(0, 0, "X--------")]
-        [InlineData(0, 1, "-X-------")]
-        [InlineData(0, 2, "--X------")]
-        public void return_board_with_first_played_position(int row, int column, string expectedBoard)
+        [Fact]
+        public void return_game_in_progress_after_first_move()
         {
-            var position = new Position(row, column);
-            Board board = new TicTacToeService().Play(position);
+            var position = new Position(0, 1);
 
-            Assert.Equal(expectedBoard, board.ToString());
+            GameResult result = new TicTacToeService().Play(position);
+
+            Assert.Equal(GameResult.InProgress, result);
+        }
+
+        [Fact]
+        public void return_draw_when_all_possitions_were_played()
+        {
+            var ticTacToeService = new TicTacToeService();
+
+            ticTacToeService.Play(new Position(0, 0));
+            ticTacToeService.Play(new Position(0, 1));
+            ticTacToeService.Play(new Position(0, 2));
+            ticTacToeService.Play(new Position(1, 0));
+            ticTacToeService.Play(new Position(1, 1));
+            ticTacToeService.Play(new Position(1, 2));
+            ticTacToeService.Play(new Position(2, 0));
+            ticTacToeService.Play(new Position(2, 1));
+
+            GameResult result = ticTacToeService.Play(new Position(2, 2));
+
+            Assert.Equal(GameResult.Draw, result);
+
         }
     }
 }

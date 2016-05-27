@@ -43,7 +43,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Board.cs" />
+    <Compile Include="GameResult.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="TicTacToeService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

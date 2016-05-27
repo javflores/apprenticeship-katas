@@ -60,8 +60,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BoardShould.cs" />
-    <Compile Include="PositionShould.cs" />
     <Compile Include="TicTacToeServiceShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

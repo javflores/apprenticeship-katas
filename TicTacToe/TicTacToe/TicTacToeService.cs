@@ -1,17 +1,21 @@
-﻿namespace TicTacToe
+﻿using System.Collections.Generic;
+
+namespace TicTacToe
 {
     public class TicTacToeService
     {
-        private readonly Board _board;
+        private readonly IList<Position> _positions = new List<Position>();
 
-        public TicTacToeService()
+        public GameResult Play(Position position)
         {
-            _board = new Board();
-        }
-        public Board Play(Position position)
-        {
-            _board.Played(position);
-            return _board;
+            _positions.Add(position);
+
+            if (_positions.Count == 9)
+            {
+                return GameResult.Draw;
+            }
+
+            return GameResult.InProgress;
         }
     }
 }
