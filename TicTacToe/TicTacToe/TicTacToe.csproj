@@ -44,6 +44,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GameBoard\Board.cs" />
+    <Compile Include="GameBoard\Column.cs" />
+    <Compile Include="GameBoard\Columns.cs" />
     <Compile Include="GameBoard\Position.cs" />
     <Compile Include="GameBoard\Row.cs" />
     <Compile Include="GameBoard\Rows.cs" />
