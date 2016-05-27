@@ -1,4 +1,5 @@
 ﻿using TicTacToe;
+using TicTacToe.GameBoard;
 using Xunit;
 
 namespace TicTacToeTests

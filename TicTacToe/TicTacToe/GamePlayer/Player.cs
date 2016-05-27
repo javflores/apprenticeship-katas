@@ -1,4 +1,4 @@
-﻿namespace TicTacToe
+﻿namespace TicTacToe.GamePlayer
 {
     public abstract class Player
     {

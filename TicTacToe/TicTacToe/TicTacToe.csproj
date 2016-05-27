@@ -43,16 +43,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GameBoard\Board.cs" />
+    <Compile Include="GameBoard\Position.cs" />
+    <Compile Include="GameBoard\Row.cs" />
+    <Compile Include="GameBoard\Rows.cs" />
+    <Compile Include="GamePlayer\NoPlayer.cs" />
+    <Compile Include="GamePlayer\Player.cs" />
+    <Compile Include="GamePlayer\PlayerO.cs" />
+    <Compile Include="GamePlayer\Players.cs" />
+    <Compile Include="GamePlayer\PlayerX.cs" />
     <Compile Include="GameResult.cs" />
-    <Compile Include="NoPlayer.cs" />
-    <Compile Include="Player.cs" />
-    <Compile Include="PlayerO.cs" />
-    <Compile Include="Players.cs" />
-    <Compile Include="PlayerX.cs" />
-    <Compile Include="Position.cs" />
-    <Compile Include="Board.cs" />
-    <Compile Include="Row.cs" />
-    <Compile Include="Rows.cs" />
     <Compile Include="TicTacToeService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

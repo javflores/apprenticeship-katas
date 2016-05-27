@@ -1,4 +1,4 @@
-﻿namespace TicTacToe
+﻿namespace TicTacToe.GamePlayer
 {
     public class PlayerX : Player
     {

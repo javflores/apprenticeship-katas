@@ -1,4 +1,4 @@
-﻿namespace TicTacToe
+﻿namespace TicTacToe.GameBoard
 {
     public class Position
     {

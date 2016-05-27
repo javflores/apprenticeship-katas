@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
+using TicTacToe.GamePlayer;
 
-namespace TicTacToe
+namespace TicTacToe.GameBoard
 {
     public class Board
     {

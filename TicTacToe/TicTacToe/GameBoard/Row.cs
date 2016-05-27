@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using TicTacToe.GamePlayer;
 
-namespace TicTacToe
+namespace TicTacToe.GameBoard
 {
     public class Row
     {
@@ -28,18 +28,14 @@ namespace TicTacToe
 
         public Player Winner()
         {
-            var players = _positions.Select(position => position.Value);
-            if (players.All(player => player.Equals(new PlayerX())))
-            {
-                return new PlayerX();
-            }
+            var winner = _positions
+                .GroupBy(position => position.Value)
+                .Where(position => position.Count() == 3)
+                .Select(position => position.Key)
+                .DefaultIfEmpty(new NoPlayer())
+                .SingleOrDefault();
 
-            if (players.All(player => player.Equals(new PlayerO())))
-            {
-                return new PlayerO();
-            }
-
-            return new NoPlayer();
+            return winner;
         }
     }
 }

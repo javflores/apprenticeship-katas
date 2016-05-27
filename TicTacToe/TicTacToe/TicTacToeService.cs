@@ -1,4 +1,7 @@
-﻿namespace TicTacToe
+﻿using TicTacToe.GameBoard;
+using TicTacToe.GamePlayer;
+
+namespace TicTacToe
 {
     public class TicTacToeService
     {

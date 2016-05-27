@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
+using TicTacToe.GamePlayer;
 
-namespace TicTacToe
+namespace TicTacToe.GameBoard
 {
     public class Rows
     {
@@ -25,13 +25,9 @@ namespace TicTacToe
         public Player Winner()
         {
             Player winner = new NoPlayer();
-            for (int row = 0; !winner.Equals(new NoPlayer()) || row < 3 ; row++)
+            for (int row = 0; winner.Equals(new NoPlayer()) && row < 3 ; row++)
             {
                 winner = _rows[row].Winner();
-                if (!winner.Equals(new NoPlayer()))
-                {
-                    return winner;
-                }
             }
 
             return winner;
