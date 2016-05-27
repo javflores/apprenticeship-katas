@@ -44,10 +44,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GameResult.cs" />
+    <Compile Include="NoPlayer.cs" />
     <Compile Include="Player.cs" />
+    <Compile Include="PlayerO.cs" />
     <Compile Include="Players.cs" />
+    <Compile Include="PlayerX.cs" />
     <Compile Include="Position.cs" />
-    <Compile Include="Positions.cs" />
+    <Compile Include="Board.cs" />
+    <Compile Include="Row.cs" />
+    <Compile Include="Rows.cs" />
     <Compile Include="TicTacToeService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

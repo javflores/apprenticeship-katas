@@ -1,10 +1,10 @@
 ﻿namespace TicTacToe
 {
-    public class Player
+    public abstract class Player
     {
         private readonly string _player;
 
-        public Player(string player)
+        protected Player(string player)
         {
             _player = player;
         }
@@ -12,6 +12,11 @@
         public override bool Equals(object player)
         {
             return ((Player) player)._player == _player;
+        }
+
+        public override int GetHashCode()
+        {
+            return _player.GetHashCode();
         }
     }
 }

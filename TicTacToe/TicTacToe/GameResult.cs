@@ -4,6 +4,7 @@
     {
         InProgress,
         Draw,
-        XWin
+        XWin,
+        OWin
     }
 }

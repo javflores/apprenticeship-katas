@@ -35,7 +35,7 @@ namespace TicTacToeTests
         }
 
         [Fact]
-        public void returns_X_as_winner_when_X_filled_in_first_row()
+        public void returns_X_as_winner_when_has_filled_in_first_row()
         {
             Play(0, 0);
             Play(1, 1);
@@ -45,6 +45,20 @@ namespace TicTacToeTests
             GameResult result = _ticTacToeService.Play(new Position(0, 2));
 
             Assert.Equal(GameResult.XWin, result);
+        }
+
+        [Fact]
+        public void returns_O_as_winner_when_has_filled_in_first_row()
+        {
+            Play(1, 1);
+            Play(0, 0);
+            Play(2, 2);
+            Play(0, 1);
+            Play(2, 1);
+
+            GameResult result = _ticTacToeService.Play(new Position(0, 2));
+
+            Assert.Equal(GameResult.OWin, result);
         }
 
         private void Play(int row, int column)

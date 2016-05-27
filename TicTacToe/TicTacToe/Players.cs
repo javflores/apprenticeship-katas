@@ -11,8 +11,8 @@ namespace TicTacToe
         {
             _players = new List<Player>
             {
-                new Player("O"),
-                new Player("X")
+                new PlayerO(),
+                new PlayerX()
             };
         }
 

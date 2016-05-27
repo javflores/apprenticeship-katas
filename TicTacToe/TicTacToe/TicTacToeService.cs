@@ -2,27 +2,32 @@
 {
     public class TicTacToeService
     {
-        private readonly Positions _positions = new Positions();
+        private readonly Board _board = new Board();
         private readonly Players _players = new Players();
 
         public GameResult Play(Position position)
         {
             var currentPlayer = _players.Swap();
 
-            _positions.Play(position, currentPlayer);
+            _board.Play(position, currentPlayer);
 
-            if (_positions.AllFilledIn())
+            if (_board.AllFilledIn())
             {
                 return GameResult.Draw;
             }
 
-            var winner = _positions.Winner();
-            if (winner != null)
+            var winner = _board.Winner();
+            if (winner.Equals(new NoPlayer()))
+            {
+                return GameResult.InProgress;
+            }
+
+            if (winner.Equals(new PlayerX()))
             {
                 return GameResult.XWin;
             }
 
-            return GameResult.InProgress;
+            return GameResult.OWin;
         }
     }
 }

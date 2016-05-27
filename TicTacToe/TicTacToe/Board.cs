@@ -1,14 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace TicTacToe
 {
-    public class Positions
+    public class Board
     {
+        private readonly Rows _rows = new Rows();
         private readonly IDictionary<Position, Player> _positions = new Dictionary<Position, Player>();
 
         public void Play(Position position, Player player)
         {
+            _rows.Add(position, player);
             _positions.Add(position, player);
         }
 
@@ -19,8 +22,7 @@ namespace TicTacToe
 
         public Player Winner()
         {
-            var positionsPlayedByX = _positions.Where(position => position.Value.Equals(new Player("X")));
-            return positionsPlayedByX.Count() == 3 ? positionsPlayedByX.First().Value : null;
+            return _rows.Winner();
         }
     }
 }
