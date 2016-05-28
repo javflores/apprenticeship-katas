@@ -5,11 +5,11 @@ namespace TicTacToe.GameBoard
 {
     public class HorizontalRows
     {
-        private List<HorizontalRow> _rows;
+        private List<IRow> _rows;
 
         public HorizontalRows()
         {
-            _rows = new List<HorizontalRow>()
+            _rows = new List<IRow>()
             {
                 new HorizontalRow(0),
                 new HorizontalRow(1),
