@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using TicTacToe.GamePlayer;
 
 namespace TicTacToe.GameBoard
 {

@@ -9,15 +9,15 @@ namespace TicTacToe.GameBoard
 
         public void Add(Position position, Player player)
         {
-            _rows.ForEach(column => column.Add(position, player));
+            _rows.ForEach(row => row.Add(position, player));
         }
 
         public Player Winner()
         {
             Player winner = new NoPlayer();
-            for (int column = 0; winner.Equals(new NoPlayer()) && column < 3; column++)
+            for (int row = 0; winner.Equals(new NoPlayer()) && row < _rows.Count; row++)
             {
-                winner = _rows[column].Winner();
+                winner = _rows[row].Winner();
             }
 
             return winner;

@@ -9,7 +9,8 @@ namespace TicTacToe.GameBoard
         private readonly List<IRows> _rows = new List<IRows>
         {
             new HorizontalRows(),
-            new VerticalRows()
+            new VerticalRows(),
+            new DiagonalRows()
         };
         private readonly IDictionary<Position, Player> _positions = new Dictionary<Position, Player>();
 
