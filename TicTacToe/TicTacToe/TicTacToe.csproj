@@ -45,7 +45,9 @@
   <ItemGroup>
     <Compile Include="GameBoard\Board.cs" />
     <Compile Include="GameBoard\IRow.cs" />
+    <Compile Include="GameBoard\IRows.cs" />
     <Compile Include="GameBoard\Row.cs" />
+    <Compile Include="GameBoard\Rows.cs" />
     <Compile Include="GameBoard\VerticalRow.cs" />
     <Compile Include="GameBoard\VerticalRows.cs" />
     <Compile Include="GameBoard\Position.cs" />
