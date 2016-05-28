@@ -12,17 +12,15 @@ namespace TicTacToe.GameBoard
             new VerticalRows(),
             new DiagonalRows()
         };
-        private readonly IDictionary<Position, Player> _positions = new Dictionary<Position, Player>();
 
         public void Play(Position position, Player player)
         {
             _rows.ForEach(rows => rows.Add(position, player));
-            _positions.Add(position, player);
         }
 
         public bool AllFilledIn()
         {
-            return _positions.Count == 9;
+            return _rows.All(row => row.AllFilledIn());
         }
 
         public Player Winner()

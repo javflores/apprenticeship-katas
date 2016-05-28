@@ -6,5 +6,6 @@ namespace TicTacToe.GameBoard
     {
         void Add(Position position, Player player);
         Player Winner();
+        bool AllPositionsFilledIn();
     }
 }

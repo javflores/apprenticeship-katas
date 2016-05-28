@@ -27,5 +27,10 @@ namespace TicTacToe.GameBoard
 
             return winner;
         }
+
+        public bool AllPositionsFilledIn()
+        {
+            return _positions.All(position => !position.Value.Equals(new NoPlayer()));
+        }
     }
 }

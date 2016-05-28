@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using TicTacToe.GamePlayer;
 
 namespace TicTacToe.GameBoard
@@ -21,6 +22,11 @@ namespace TicTacToe.GameBoard
             }
 
             return winner;
+        }
+
+        public bool AllFilledIn()
+        {
+            return _rows.All(row => row.AllPositionsFilledIn());
         }
     }
 }
