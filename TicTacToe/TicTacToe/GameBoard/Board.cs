@@ -1,18 +1,21 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using TicTacToe.GamePlayer;
 
 namespace TicTacToe.GameBoard
 {
     public class Board
     {
-        private readonly HorizontalRows _horizontalRows = new HorizontalRows();
-        private readonly VerticalRows _verticalRows = new VerticalRows();
+        private readonly List<IRows> _rows = new List<IRows>
+        {
+            new HorizontalRows(),
+            new VerticalRows()
+        };
         private readonly IDictionary<Position, Player> _positions = new Dictionary<Position, Player>();
 
         public void Play(Position position, Player player)
         {
-            _horizontalRows.Add(position, player);
-            _verticalRows.Add(position, player);
+            _rows.ForEach(rows => rows.Add(position, player));
             _positions.Add(position, player);
         }
 
@@ -23,13 +26,11 @@ namespace TicTacToe.GameBoard
 
         public Player Winner()
         {
-            var winner = _horizontalRows.Winner();
-            if (!winner.Equals(new NoPlayer()))
-            {
-                return winner;
-            }
-
-            return _verticalRows.Winner();
+            return _rows
+                .Select(rows => rows.Winner())
+                .Where(result => !result.Equals(new NoPlayer()))
+                .DefaultIfEmpty(new NoPlayer())
+                .SingleOrDefault();
         }
     }
 }
