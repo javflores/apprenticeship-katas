@@ -44,11 +44,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GameBoard\Board.cs" />
-    <Compile Include="GameBoard\Column.cs" />
-    <Compile Include="GameBoard\Columns.cs" />
+    <Compile Include="GameBoard\VerticalRow.cs" />
+    <Compile Include="GameBoard\VerticalRows.cs" />
     <Compile Include="GameBoard\Position.cs" />
-    <Compile Include="GameBoard\Row.cs" />
-    <Compile Include="GameBoard\Rows.cs" />
+    <Compile Include="GameBoard\HorizontalRow.cs" />
+    <Compile Include="GameBoard\HorizontalRows.cs" />
     <Compile Include="GamePlayer\NoPlayer.cs" />
     <Compile Include="GamePlayer\Player.cs" />
     <Compile Include="GamePlayer\PlayerO.cs" />

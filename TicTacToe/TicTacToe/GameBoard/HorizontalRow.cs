@@ -4,17 +4,17 @@ using TicTacToe.GamePlayer;
 
 namespace TicTacToe.GameBoard
 {
-    public class Column
+    public class HorizontalRow
     {
         private Dictionary<Position, Player> _positions;
 
-        public Column(int column)
+        public HorizontalRow(int row)
         {
             _positions = new Dictionary<Position, Player>()
             {
-                { new Position(0, column), new NoPlayer()},
-                { new Position(1, column), new NoPlayer()},
-                { new Position(2, column), new NoPlayer()}
+                { new Position(row, 0), new NoPlayer()},
+                { new Position(row, 1), new NoPlayer()},
+                { new Position(row, 2), new NoPlayer()}
             };
         }
 

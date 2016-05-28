@@ -3,17 +3,17 @@ using TicTacToe.GamePlayer;
 
 namespace TicTacToe.GameBoard
 {
-    public class Columns
+    public class VerticalRows
     {
-        private List<Column> _columns;
+        private List<VerticalRow> _columns;
 
-        public Columns()
+        public VerticalRows()
         {
-            _columns = new List<Column>()
+            _columns = new List<VerticalRow>()
             {
-                new Column(0),
-                new Column(1),
-                new Column(2)
+                new VerticalRow(0),
+                new VerticalRow(1),
+                new VerticalRow(2)
             };
         }
 
