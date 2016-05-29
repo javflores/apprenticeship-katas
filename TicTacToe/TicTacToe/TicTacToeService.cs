@@ -24,18 +24,8 @@ namespace TicTacToe
                 return GameResult.Draw;
             }
 
-            var winner = _board.Winner();
-            if (winner.Equals(new NoPlayer()))
-            {
-                return GameResult.InProgress;
-            }
-
-            if (winner.Equals(new PlayerX()))
-            {
-                return GameResult.XWin;
-            }
-
-            return TicTacToe.GameResult.OWin;
+            var player = _board.Winner();
+            return player.AsWinner();
         }
     }
 }

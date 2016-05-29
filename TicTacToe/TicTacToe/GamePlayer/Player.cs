@@ -18,5 +18,7 @@
         {
             return _player.GetHashCode();
         }
+
+        public abstract GameResult AsWinner();
     }
 }
