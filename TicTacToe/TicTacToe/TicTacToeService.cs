@@ -14,6 +14,11 @@ namespace TicTacToe
 
             _board.Play(position, currentPlayer);
 
+            return Result();
+        }
+
+        private GameResult Result()
+        {
             if (_board.AllFilledIn())
             {
                 return GameResult.Draw;
@@ -30,7 +35,7 @@ namespace TicTacToe
                 return GameResult.XWin;
             }
 
-            return GameResult.OWin;
+            return TicTacToe.GameResult.OWin;
         }
     }
 }
