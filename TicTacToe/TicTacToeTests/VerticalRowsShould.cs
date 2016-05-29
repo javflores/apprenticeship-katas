@@ -14,9 +14,9 @@ namespace TicTacToeTests
         {
             var verticalRows = new VerticalRows();
 
-            verticalRows.Add(new Position(0, column), new PlayerX());
-            verticalRows.Add(new Position(1, column), new PlayerX());
-            verticalRows.Add(new Position(2, column), new PlayerX());
+            verticalRows.Play(new Position(0, column), new PlayerX());
+            verticalRows.Play(new Position(1, column), new PlayerX());
+            verticalRows.Play(new Position(2, column), new PlayerX());
 
             Assert.Equal(new PlayerX(), verticalRows.Winner());
         }

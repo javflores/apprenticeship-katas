@@ -11,9 +11,9 @@ namespace TicTacToeTests
         {
             var diagonalRows = new DiagonalRows();
 
-            diagonalRows.Add(new Position(0, 0), new PlayerX());
-            diagonalRows.Add(new Position(1, 1), new PlayerX());
-            diagonalRows.Add(new Position(2, 2), new PlayerX());
+            diagonalRows.Play(new Position(0, 0), new PlayerX());
+            diagonalRows.Play(new Position(1, 1), new PlayerX());
+            diagonalRows.Play(new Position(2, 2), new PlayerX());
 
             Assert.Equal(new PlayerX(), diagonalRows.Winner());
         }
@@ -23,9 +23,9 @@ namespace TicTacToeTests
         {
             var diagonalRows = new DiagonalRows();
 
-            diagonalRows.Add(new Position(0, 2), new PlayerX());
-            diagonalRows.Add(new Position(1, 1), new PlayerX());
-            diagonalRows.Add(new Position(2, 0), new PlayerX());
+            diagonalRows.Play(new Position(0, 2), new PlayerX());
+            diagonalRows.Play(new Position(1, 1), new PlayerX());
+            diagonalRows.Play(new Position(2, 0), new PlayerX());
 
             Assert.Equal(new PlayerX(), diagonalRows.Winner());
         }

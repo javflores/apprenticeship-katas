@@ -14,9 +14,9 @@ namespace TicTacToeTests
         {
             var horizontalRows = new HorizontalRows();
 
-            horizontalRows.Add(new Position(row, 0), new PlayerX());
-            horizontalRows.Add(new Position(row, 1), new PlayerX());
-            horizontalRows.Add(new Position(row, 2), new PlayerX());
+            horizontalRows.Play(new Position(row, 0), new PlayerX());
+            horizontalRows.Play(new Position(row, 1), new PlayerX());
+            horizontalRows.Play(new Position(row, 2), new PlayerX());
 
             Assert.Equal(new PlayerX(), horizontalRows.Winner());
         }

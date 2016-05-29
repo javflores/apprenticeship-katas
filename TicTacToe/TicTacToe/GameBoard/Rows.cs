@@ -4,11 +4,11 @@ using TicTacToe.GamePlayer;
 
 namespace TicTacToe.GameBoard
 {
-    public class Rows : IRows
+    public abstract class Rows : IRows
     {
-        protected List<IRow> _rows;
+        protected abstract List<IRow> _rows { get; }
 
-        public void Add(Position position, Player player)
+        public void Play(Position position, Player player)
         {
             _rows.ForEach(row => row.Add(position, player));
         }

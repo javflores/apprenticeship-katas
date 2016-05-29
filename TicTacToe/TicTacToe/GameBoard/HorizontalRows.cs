@@ -4,14 +4,15 @@ namespace TicTacToe.GameBoard
 {
     public class HorizontalRows : Rows
     {
-        public HorizontalRows()
-        {
-            _rows = new List<IRow>()
+        private List<IRow> rows;
+
+        protected override List<IRow> _rows => 
+            rows ?? 
+            (rows = new List<IRow>
             {
                 new HorizontalRow(0),
                 new HorizontalRow(1),
                 new HorizontalRow(2)
-            };
-        }
+        });
     }
 }

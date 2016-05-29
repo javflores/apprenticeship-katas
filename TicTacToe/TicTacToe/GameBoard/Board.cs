@@ -15,7 +15,7 @@ namespace TicTacToe.GameBoard
 
         public void Play(Position position, Player player)
         {
-            _rows.ForEach(rows => rows.Add(position, player));
+            _rows.ForEach(rows => rows.Play(position, player));
         }
 
         public bool AllFilledIn()
