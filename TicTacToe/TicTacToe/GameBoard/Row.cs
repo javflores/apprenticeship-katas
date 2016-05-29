@@ -4,11 +4,11 @@ using TicTacToe.GamePlayer;
 
 namespace TicTacToe.GameBoard
 {
-    public class Row : IRow
+    public abstract class Row : IRow
     {
-        protected Dictionary<Position, Player> _positions;
+        protected abstract Dictionary<Position, Player> _positions { get; }
 
-        public void Add(Position position, Player player)
+        public void Play(Position position, Player player)
         {
             var positionInRow = _positions.SingleOrDefault(p => p.Key.Equals(position));
 

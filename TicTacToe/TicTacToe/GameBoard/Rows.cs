@@ -10,13 +10,13 @@ namespace TicTacToe.GameBoard
 
         public void Play(Position position, Player player)
         {
-            _rows.ForEach(row => row.Add(position, player));
+            _rows.ForEach(row => row.Play(position, player));
         }
 
         public Player Winner()
         {
             Player winner = new NoPlayer();
-            for (int row = 0; winner.Equals(new NoPlayer()) && row < _rows.Count; row++)
+            for (int row = 0; NoWinnerYet(winner) && row < _rows.Count; row++)
             {
                 winner = _rows[row].Winner();
             }
@@ -27,6 +27,11 @@ namespace TicTacToe.GameBoard
         public bool AllFilledIn()
         {
             return _rows.All(row => row.AllPositionsFilledIn());
+        }
+
+        private bool NoWinnerYet(Player winner)
+        {
+            return winner.Equals(new NoPlayer());
         }
     }
 }

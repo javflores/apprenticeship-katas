@@ -5,6 +5,8 @@ namespace TicTacToe.GameBoard
 {
     public class HorizontalRow : Row
     {
+        protected override Dictionary<Position, Player> _positions { get; }
+
         public HorizontalRow(int row)
         {
             _positions = new Dictionary<Position, Player>()

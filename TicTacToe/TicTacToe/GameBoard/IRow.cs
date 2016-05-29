@@ -4,7 +4,7 @@ namespace TicTacToe.GameBoard
 {
     public interface IRow
     {
-        void Add(Position position, Player player);
+        void Play(Position position, Player player);
         Player Winner();
         bool AllPositionsFilledIn();
     }
