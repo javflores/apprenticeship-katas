@@ -13,14 +13,29 @@ namespace TicTacToe.GameBoard
             new DiagonalRows()
         };
 
+        private Dictionary<Position, Player> _positions = new Dictionary<Position, Player>()
+            {
+                { new Position(0, 0), new NoPlayer()},
+                { new Position(0, 1), new NoPlayer()},
+                { new Position(0, 2), new NoPlayer()},
+                { new Position(1, 0), new NoPlayer()},
+                { new Position(1, 1), new NoPlayer()},
+                { new Position(1, 2), new NoPlayer()},
+                { new Position(2, 0), new NoPlayer()},
+                { new Position(2, 1), new NoPlayer()},
+                { new Position(2, 2), new NoPlayer()}
+            };
+
         public void Play(Position position, Player player)
         {
+            _positions[position] = player;
+
             _rows.ForEach(rows => rows.Play(position, player));
         }
 
         public bool AllFilledIn()
         {
-            return _rows.All(row => row.AllFilledIn());
+            return _positions.All(position => !position.Value.Equals(new NoPlayer()));
         }
 
         public Player Winner()

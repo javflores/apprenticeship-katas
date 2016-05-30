@@ -4,9 +4,9 @@
     {
         public PlayerO() : base("O") {}
 
-        public override GameResult AsWinner()
+        public override string AsWinner()
         {
-            return GameResult.OWin;
+            return "O Win";
         }
     }
 }

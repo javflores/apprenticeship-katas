@@ -19,6 +19,6 @@
             return _player.GetHashCode();
         }
 
-        public abstract GameResult AsWinner();
+        public abstract string AsWinner();
     }
 }

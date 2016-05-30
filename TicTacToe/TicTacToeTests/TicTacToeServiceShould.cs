@@ -1,5 +1,4 @@
 ﻿using TicTacToe;
-using TicTacToe.GameBoard;
 using Xunit;
 
 namespace TicTacToeTests
@@ -11,13 +10,13 @@ namespace TicTacToeTests
         [Fact]
         public void return_game_in_progress_after_first_move()
         {
-            Assert.Equal(GameResult.InProgress, Play(0, 1));
+            Assert.Equal("In Progress", Play(0, 1));
         }
 
         [Fact]
         public void return_draw_when_all_possitions_were_played()
         {
-            Assert.Equal(GameResult.Draw, FillInBoard());
+            Assert.Equal("Draw", FillInBoard());
         }
 
         [Fact]
@@ -28,15 +27,15 @@ namespace TicTacToeTests
             Play(0, 1);
             Play(2, 2);
 
-            Assert.Equal(GameResult.XWin, Play(0, 2));
+            Assert.Equal("X Win", Play(0, 2));
         }
 
-        private GameResult Play(int row, int column)
+        private string Play(int row, int column)
         {
-            return _ticTacToeService.Play(new Position(row, column));
+            return _ticTacToeService.Play(row, column);
         }
 
-        private GameResult FillInBoard()
+        private string FillInBoard()
         {
             Play(0, 0);
             Play(0, 1);
@@ -47,8 +46,7 @@ namespace TicTacToeTests
             Play(2, 0);
             Play(2, 1);
 
-            GameResult result = _ticTacToeService.Play(new Position(2, 2));
-            return result;
+            return _ticTacToeService.Play(2, 2);
         }
     }
 }

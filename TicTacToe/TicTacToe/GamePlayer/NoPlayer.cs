@@ -4,9 +4,9 @@
     {
         public NoPlayer() : base(""){}
 
-        public override GameResult AsWinner()
+        public override string AsWinner()
         {
-            return GameResult.InProgress;
+            return "In Progress";
         }
     }
 }
