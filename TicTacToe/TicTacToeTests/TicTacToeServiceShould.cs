@@ -43,8 +43,8 @@ namespace TicTacToeTests
             Play(1, 0);
             Play(1, 1);
             Play(1, 2);
-            Play(2, 0);
             Play(2, 1);
+            Play(2, 0);
 
             return _ticTacToeService.Play(2, 2);
         }
