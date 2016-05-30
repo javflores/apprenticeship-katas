@@ -44,9 +44,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GameBoard\Board.cs" />
-    <Compile Include="GameBoard\Positions.cs" />
     <Compile Include="GameBoard\Position.cs" />
-    <Compile Include="GameBoard\WinningMoves.cs" />
+    <Compile Include="GameBoard\Row.cs" />
+    <Compile Include="GameBoard\Rows.cs" />
     <Compile Include="GamePlayer\Player.cs" />
     <Compile Include="GamePlayer\Players.cs" />
     <Compile Include="GameResultFactory.cs" />

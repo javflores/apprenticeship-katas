@@ -18,7 +18,7 @@
 
         public override bool Equals(object another)
         {
-            return ((Position) another)._column == _column && ((Position) another)._row == _row;
+            return ((Position)another)._column == _column && ((Position)another)._row == _row;
         }
     }
 }

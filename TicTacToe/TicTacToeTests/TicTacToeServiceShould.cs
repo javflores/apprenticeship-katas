@@ -39,14 +39,14 @@ namespace TicTacToeTests
         {
             Play(0, 0);
             Play(0, 1);
-            Play(0, 2);
-            Play(1, 0);
             Play(1, 1);
+            Play(0, 2);
             Play(1, 2);
+            Play(1, 0);
             Play(2, 1);
-            Play(2, 0);
+            Play(2, 2);
 
-            return _ticTacToeService.Play(2, 2);
+            return _ticTacToeService.Play(2, 0);
         }
     }
 }

@@ -4,22 +4,21 @@ namespace TicTacToe.GameBoard
 {
     public class Board
     {
-        readonly Positions _positions = new Positions();
-        readonly WinningMoves _winningMoves = new WinningMoves();
+        private readonly Rows _rows = new Rows();
 
         public void Play(Position position, Player player)
         {
-            _positions.Play(position, player);
+            _rows.Play(position, player);
         }
 
         public bool AllFilledIn()
         {
-            return _positions.AllFilledIn();
+            return _rows.AllFilledIn();
         }
 
         public Player Winner()
         {
-            return _winningMoves.FindWinner(_positions);
+            return _rows.FindWinner();
         }
     }
 }
