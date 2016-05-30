@@ -44,17 +44,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GameBoard\Board.cs" />
-    <Compile Include="GameBoard\DiagonalRow.cs" />
-    <Compile Include="GameBoard\DiagonalRows.cs" />
-    <Compile Include="GameBoard\IRow.cs" />
-    <Compile Include="GameBoard\IRows.cs" />
-    <Compile Include="GameBoard\Row.cs" />
-    <Compile Include="GameBoard\Rows.cs" />
-    <Compile Include="GameBoard\VerticalRow.cs" />
-    <Compile Include="GameBoard\VerticalRows.cs" />
+    <Compile Include="GameBoard\Positions.cs" />
     <Compile Include="GameBoard\Position.cs" />
-    <Compile Include="GameBoard\HorizontalRow.cs" />
-    <Compile Include="GameBoard\HorizontalRows.cs" />
+    <Compile Include="GameBoard\WinningMoves.cs" />
     <Compile Include="GamePlayer\NoPlayer.cs" />
     <Compile Include="GamePlayer\Player.cs" />
     <Compile Include="GamePlayer\PlayerO.cs" />
