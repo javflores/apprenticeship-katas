@@ -1,24 +1,9 @@
 ﻿namespace TicTacToe.GamePlayer
 {
-    public abstract class Player
+    public enum Player
     {
-        private readonly string _player;
-
-        protected Player(string player)
-        {
-            _player = player;
-        }
-
-        public override bool Equals(object player)
-        {
-            return ((Player) player)._player == _player;
-        }
-
-        public override int GetHashCode()
-        {
-            return _player.GetHashCode();
-        }
-
-        public abstract string AsWinner();
+        X,
+        O,
+        NoPlayer
     }
 }

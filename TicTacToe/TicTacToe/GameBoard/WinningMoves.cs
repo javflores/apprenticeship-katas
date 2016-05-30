@@ -22,8 +22,8 @@ namespace TicTacToe.GameBoard
         {
             return _winningMoves
                 .Select(winningMove => positions.FindPlayerMatching(winningMove))
-                .Where(player => !player.Equals(new NoPlayer()))
-                .DefaultIfEmpty(new NoPlayer())
+                .Where(player => !player.Equals(Player.NoPlayer))
+                .DefaultIfEmpty(Player.NoPlayer)
                 .FirstOrDefault();
         }
     }

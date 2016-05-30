@@ -14,18 +14,7 @@ namespace TicTacToe
 
             _board.Play(new Position(row, column), currentPlayer);
 
-            return Result();
-        }
-
-        private string Result()
-        {
-            if (_board.AllFilledIn())
-            {
-                return "Draw";
-            }
-
-            var player = _board.Winner();
-            return player.AsWinner();
+            return GameResultFactory.Evaluate(_board);
         }
     }
 }

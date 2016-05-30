@@ -1,25 +1,15 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-
-namespace TicTacToe.GamePlayer
+﻿namespace TicTacToe.GamePlayer
 {
     public class Players
     {
-        private readonly List<Player> _players;
-
-        public Players()
-        {
-            _players = new List<Player>
-            {
-                new PlayerO(),
-                new PlayerX()
-            };
-        }
-
+        private Player _current = Player.O;
         public Player Swap()
         {
-            _players.Reverse();
-            return _players.First();
+            _current = _current.Equals(Player.O)
+                ? Player.X
+                : Player.O;
+
+            return _current;
         }
     }
 }

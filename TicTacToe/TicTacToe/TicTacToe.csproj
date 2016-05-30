@@ -47,12 +47,9 @@
     <Compile Include="GameBoard\Positions.cs" />
     <Compile Include="GameBoard\Position.cs" />
     <Compile Include="GameBoard\WinningMoves.cs" />
-    <Compile Include="GamePlayer\NoPlayer.cs" />
     <Compile Include="GamePlayer\Player.cs" />
-    <Compile Include="GamePlayer\PlayerO.cs" />
     <Compile Include="GamePlayer\Players.cs" />
-    <Compile Include="GamePlayer\PlayerX.cs" />
-    <Compile Include="GameResult.cs" />
+    <Compile Include="GameResultFactory.cs" />
     <Compile Include="TicTacToeService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

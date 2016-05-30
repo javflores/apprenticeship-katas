@@ -16,7 +16,7 @@ namespace TicTacToeTests
         {
             FillInRow(row);
 
-            Assert.Equal(new PlayerX(), _board.Winner());
+            Assert.Equal(Player.X, _board.Winner());
         }
 
         [Theory]
@@ -27,7 +27,7 @@ namespace TicTacToeTests
         {
             FillInColumn(column);
 
-            Assert.Equal(new PlayerX(), _board.Winner());
+            Assert.Equal(Player.X, _board.Winner());
         }
 
         [Fact]
@@ -37,7 +37,7 @@ namespace TicTacToeTests
             Play(1, 1);
             Play(2, 2);
 
-            Assert.Equal(new PlayerX(), _board.Winner());
+            Assert.Equal(Player.X, _board.Winner());
         }
 
         [Fact]
@@ -47,7 +47,7 @@ namespace TicTacToeTests
             Play(1, 1);
             Play(2, 0);
 
-            Assert.Equal(new PlayerX(), _board.Winner());
+            Assert.Equal(Player.X, _board.Winner());
         }
 
         private void FillInRow(int row)
@@ -66,7 +66,7 @@ namespace TicTacToeTests
 
         private void Play(int row, int column)
         {
-            _board.Play(new Position(row, column), new PlayerX());
+            _board.Play(new Position(row, column), Player.X);
         }
     }
 }

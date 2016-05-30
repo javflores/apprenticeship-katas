@@ -8,15 +8,15 @@ namespace TicTacToe.GameBoard
     {
         private readonly Dictionary<Position, Player> _positions = new Dictionary<Position, Player>
         {
-            { new Position(0, 0), new NoPlayer()},
-            { new Position(0, 1), new NoPlayer()},
-            { new Position(0, 2), new NoPlayer()},
-            { new Position(1, 0), new NoPlayer()},
-            { new Position(1, 1), new NoPlayer()},
-            { new Position(1, 2), new NoPlayer()},
-            { new Position(2, 0), new NoPlayer()},
-            { new Position(2, 1), new NoPlayer()},
-            { new Position(2, 2), new NoPlayer()}
+            { new Position(0, 0), Player.NoPlayer},
+            { new Position(0, 1), Player.NoPlayer},
+            { new Position(0, 2), Player.NoPlayer},
+            { new Position(1, 0), Player.NoPlayer},
+            { new Position(1, 1), Player.NoPlayer},
+            { new Position(1, 2), Player.NoPlayer},
+            { new Position(2, 0), Player.NoPlayer},
+            { new Position(2, 1), Player.NoPlayer},
+            { new Position(2, 2), Player.NoPlayer}
         };
 
         public void Play(Position position, Player player)
@@ -26,18 +26,23 @@ namespace TicTacToe.GameBoard
 
         public bool AllFilledIn()
         {
-            return _positions.All(position => !position.Value.Equals(new NoPlayer()));
+            return _positions.All(position => !position.Value.Equals(Player.NoPlayer));
         }
 
         public Player FindPlayerMatching(IList<Position> positionsPattern)
         {
             return _positions
                 .GroupBy(position => position.Value)
-                .Where(group => !group.Key.Equals(new NoPlayer()))
-                .Where(x => x.Select(y => y.Key).SequenceEqual(positionsPattern))
-                .Select(x => x.Key)
-                .DefaultIfEmpty(new NoPlayer())
+                .Where(positionsByPlayer => !positionsByPlayer.Key.Equals(Player.NoPlayer))
+                .Where(positionsByPlayer => PlayedPositionsMatches(positionsPattern, positionsByPlayer))
+                .Select(player => player.Key)
+                .DefaultIfEmpty(Player.NoPlayer)
                 .SingleOrDefault();
+        }
+
+        private bool PlayedPositionsMatches(IList<Position> positionsPattern, IGrouping<Player, KeyValuePair<Position, Player>> positionsByPlayer)
+        {
+            return positionsByPlayer.Select(positions => positions.Key).SequenceEqual(positionsPattern);
         }
     }
 }
