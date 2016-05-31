@@ -6,6 +6,7 @@ namespace GameOfLife
     public class Cell
     {
         private bool _alive;
+        private List<Cell> _neighbours;
 
         public Cell(bool alive)
         {
@@ -14,22 +15,26 @@ namespace GameOfLife
 
         public void ToNextGeneration(List<Cell> neighbours)
         {
-            var aliveNeighbours = neighbours.Count(neighbour => neighbour.IsAlive());
-            if (_alive)
-            {
-                _alive = aliveNeighbours == 2 || aliveNeighbours == 3;
-            }
+            _neighbours = neighbours;
 
-            else
-            {
-                _alive = aliveNeighbours == 3;
-            }
-            
+            _alive = Survival() || Reproduction();
         }
 
         public bool IsAlive()
         {
             return _alive;
+        }
+
+        private bool Reproduction()
+        {
+            var aliveNeighbours = _neighbours.Count(neighbour => neighbour.IsAlive());
+            return !_alive && aliveNeighbours == 3;
+        }
+
+        private bool Survival()
+        {
+            var aliveNeighbours = _neighbours.Count(neighbour => neighbour.IsAlive());
+            return _alive && (aliveNeighbours == 2 || aliveNeighbours == 3);
         }
     }
 }
