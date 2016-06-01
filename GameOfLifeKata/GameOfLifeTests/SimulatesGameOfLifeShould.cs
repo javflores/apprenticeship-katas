@@ -26,7 +26,7 @@ namespace GameOfLifeTests
         }
 
         [Fact]
-        public void gets_next_generation_of_universe()
+        public void replaces_universe_with_current_universe_next_generation()
         {
             var nextGeneration = new Universe();
             _seedUniverse.NextGeneration().Returns(nextGeneration);
