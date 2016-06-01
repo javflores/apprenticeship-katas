@@ -2,7 +2,7 @@ namespace GameOfLifeKata
 {
     public class SimulatesGameOfLife
     {
-        private Universe _universe;
+        private Universe.Universe _universe;
 
         public SimulatesGameOfLife(GeneratesSeedUniverse generatesSeedUniverse)
         {
@@ -14,7 +14,7 @@ namespace GameOfLifeKata
             _universe = _universe.NextGeneration();
         }
 
-        public Universe CurrentUniverse()
+        public Universe.Universe CurrentUniverse()
         {
             return _universe;
         }

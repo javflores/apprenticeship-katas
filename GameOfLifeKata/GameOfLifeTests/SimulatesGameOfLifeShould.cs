@@ -1,4 +1,6 @@
-﻿using GameOfLifeKata;
+﻿using System.Collections.Generic;
+using GameOfLifeKata;
+using GameOfLifeKata.Universe;
 using NSubstitute;
 using Xunit;
 
@@ -11,7 +13,7 @@ namespace GameOfLifeTests
 
         public SimulatesGameOfLifeShould()
         {
-            _seedUniverse = Substitute.For<Universe>();
+            _seedUniverse = Substitute.For<Universe>(new Cells(new List<Cell>()));
             var generatesSeedUniverse = Substitute.For<GeneratesSeedUniverse>();
             generatesSeedUniverse.Generate().Returns(_seedUniverse);
             _simulator = new SimulatesGameOfLife(generatesSeedUniverse);
@@ -28,7 +30,7 @@ namespace GameOfLifeTests
         [Fact]
         public void replaces_universe_with_current_universe_next_generation()
         {
-            var nextGeneration = new Universe();
+            var nextGeneration = new Universe(new Cells(new List<Cell>()));
             _seedUniverse.NextGeneration().Returns(nextGeneration);
 
             _simulator.Simulate();
