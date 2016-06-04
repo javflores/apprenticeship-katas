@@ -41,10 +41,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GeneratesSeedUniverse.cs" />
+    <Compile Include="IPositionsGenerator.cs" />
+    <Compile Include="PositionsGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SimulatesGameOfLife.cs" />
     <Compile Include="Universe\Cell.cs" />
-    <Compile Include="Universe\Cells.cs" />
     <Compile Include="Universe\Universe.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

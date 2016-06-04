@@ -9,29 +9,29 @@ namespace GameOfLifeTests
     public class SimulatesGameOfLifeShould
     {
         private readonly SimulatesGameOfLife _simulator;
-        private readonly Universe _seedUniverse;
+        private readonly Universe _seed;
 
         public SimulatesGameOfLifeShould()
         {
-            _seedUniverse = Substitute.For<Universe>(new Cells(new List<Cell>()));
-            var generatesSeedUniverse = Substitute.For<GeneratesSeedUniverse>();
-            generatesSeedUniverse.Generate().Returns(_seedUniverse);
+            _seed = Substitute.For<Universe>(new Dictionary<int, Cell>());
+            var generatesSeedUniverse = Substitute.For<GeneratesSeedUniverse>(new PositionsGenerator());
+            generatesSeedUniverse.Generate(20).Returns(_seed);
             _simulator = new SimulatesGameOfLife(generatesSeedUniverse);
         }
 
         [Fact]
-        public void start_universe_with_seed_universe()
+        public void start_universe_with_seed()
         {
             Universe universe = _simulator.CurrentUniverse();
 
-            Assert.Equal(_seedUniverse, universe);
+            Assert.Equal(_seed, universe);
         }
 
         [Fact]
-        public void replaces_universe_with_current_universe_next_generation()
+        public void replaces_universe_with_next_generation()
         {
-            var nextGeneration = new Universe(new Cells(new List<Cell>()));
-            _seedUniverse.NextGeneration().Returns(nextGeneration);
+            var nextGeneration = new Universe(new Dictionary<int, Cell>());
+            _seed.NextGeneration().Returns(nextGeneration);
 
             _simulator.Simulate();
 

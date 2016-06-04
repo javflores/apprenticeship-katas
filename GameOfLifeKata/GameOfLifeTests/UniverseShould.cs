@@ -8,14 +8,14 @@ namespace GameOfLifeTests
     public class UniverseShould
     {
         [Fact]
-        public void return_next_generation_universe()
+        public void produce_a_next_generation()
         {
             var cell = Substitute.For<Cell>(true);
-            var nextGenerationCell = new Cell(true);
+            var nextGenerationCell = Substitute.For<Cell>(true);
             cell.ToNextGeneration().Returns(nextGenerationCell);
-            var cells = new List<Cell> {cell};
+            var cells = new Dictionary<int, Cell> {{0, cell}};
 
-            Universe universe = new Universe(new Cells(cells));
+            Universe universe = new Universe(cells);
             Universe nextUniverse = universe.NextGeneration();
 
             Assert.True(nextUniverse.Contains(nextGenerationCell));

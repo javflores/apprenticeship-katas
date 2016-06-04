@@ -6,7 +6,7 @@ namespace GameOfLifeKata
 
         public SimulatesGameOfLife(GeneratesSeedUniverse generatesSeedUniverse)
         {
-            _universe = generatesSeedUniverse.Generate();
+            _universe = generatesSeedUniverse.Generate(20);
         }
 
         public void Simulate()
