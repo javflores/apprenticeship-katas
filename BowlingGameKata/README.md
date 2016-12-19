@@ -17,13 +17,15 @@ In each frame, the bowler gets up to two tries to knock down all ten pins.
 These bonus throws are taken as part of the same turn. If a bonus ball knocks down all the pins, the process does not repeat. The bonus balls are only used to calculate the score of the final frame.
 The game score is the total of all frame scores.
 
-#### Examples:
+### Specs:
 
 - ```X``` indicates a strike
 - ```/``` indicates a spare
 - ```-``` indicates a miss
 - ```|``` indicates a frame boundary
 - The characters after the ```||``` indicate bonus balls
+
+#### Examples:
 
    - X|X|X|X|X|X|X|X|X|X||XX
 
