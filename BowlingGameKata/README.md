@@ -1,12 +1,12 @@
 ## Bowling Game Kata
 
 Write a program to score a game of Ten-Pin Bowling.
-Input: string (described below) representing a bowling game
-Ouput: integer score
+Given an input string describing the result of the bowling game, the program needs to output the score as integer value.
 
 ### The scoring rules:
 
 Each game, or "line" of bowling, includes ten turns, or "frames" for the bowler. 
+
 In each frame, the bowler gets up to two tries to knock down all ten pins. 
 
 - If the first ball in a frame knocks down all ten pins, this is called a "strike". The frame is over. The score for the frame is ten plus the total of the pins knocked down in the next two balls. 
