@@ -33,6 +33,7 @@ Ten strikes on the first ball of all ten frames.
 Two bonus balls, both strikes.
 Score for each frame == 10 + score for next two 
 balls == 10 + 10 + 10 == 30
+
 **Total score == 10 frames x 30 == 300**
 
    - 9-|9-|9-|9-|9-|9-|9-|9-|9-|9-||
@@ -41,6 +42,7 @@ Nine pins hit on the first ball of all ten frames.
 Second ball of each frame misses last remaining pin.
 No bonus balls.
 Score for each frame == 9
+
 **Total score == 10 frames x 9 == 90**
 
    - 5/|5/|5/|5/|5/|5/|5/|5/|5/|5/||5
@@ -51,6 +53,7 @@ pins, a spare.
 One bonus ball, hits five pins.
 Score for each frame == 10 + score for next one
 ball == 10 + 5 == 15
+
 **Total score == 10 frames x 15 == 150**
 
    - X|7/|9-|X|-8|8/|-6|X|X|X||81
